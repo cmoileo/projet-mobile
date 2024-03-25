@@ -15,9 +15,18 @@ export const NavBar: React.FC<Props> = ({navigation}) => {
                     navigation.navigate('Trainings')
                 }
             />
-            <Text>Exercices list</Text>
-            <Text>NavBar page !</Text>
-            <Text>NavBar page !</Text>
+            <Button
+                title="Home"
+                onPress={() =>
+                    navigation.navigate('Home')
+                }
+            />
+            <Button
+                title="Exercises"
+                onPress={() =>
+                    navigation.navigate('ExerciceList')
+                }
+            />
         </View>
     );
 }
@@ -28,10 +37,13 @@ const styles = StyleSheet.create( {
         flexDirection: "row",
         backgroundColor: '#b3b7bd',
         alignItems: 'center',
-        justifyContent: 'center',
         paddingBottom: 50,
         paddingTop: 20,
-        paddingLeft: 20,
-        paddingRight: 20,
+        paddingLeft: 30,
+        paddingRight: 30,
+        position: 'absolute',
+        bottom: 0,
+        width: '100%',
+        justifyContent: 'space-between',
     },
 })
