@@ -1,9 +1,9 @@
 import {StyleSheet, Text, View} from "react-native";
 
-export const ExerciceList = () => {
+export const Exercice = () => {
     return (
         <View style={styles.container}>
-            <Text>ExerciceList page !</Text>
+            <Text>Exercice page !</Text>
         </View>
     );
 }
