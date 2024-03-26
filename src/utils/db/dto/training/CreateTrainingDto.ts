@@ -1,6 +1,16 @@
+import { CreateExerciseDto } from "../exercise/CreateExerciseDto";
+
 export class CreateTrainingDto {
-  constructor(name: string) {
-    this.name = name;
+  constructor(exercises: CreateExerciseDto[]) {
+    this.exercises = exercises.map(
+      (exercise) =>
+        new CreateExerciseDto(
+          exercise.date,
+          exercise.repetions,
+          exercise.weight,
+          exercise.breakTime
+        )
+    );
   }
-  name: string;
+  exercises: CreateExerciseDto[];
 }
