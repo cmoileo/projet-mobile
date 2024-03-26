@@ -7,7 +7,7 @@ export const TrainingPill = () => {
         <View style={styles.container}>
             <View style={styles.wrapper}>
                 <View style={styles.round}></View>
-                <Text>Training Pill</Text>
+                <Text style={styles.text}>Training 1</Text>
             </View>
             <SvgXml xml={xml} />
         </View>
@@ -33,6 +33,10 @@ const styles = StyleSheet.create({
         backgroundColor: Colors["dark-primary-color"],
         width: 10,
         height: 10,
+    },
+    text: {
+        color: Colors["primary-text-color"],
+        fontSize: 16,
     }
 })
 

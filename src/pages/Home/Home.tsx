@@ -8,6 +8,7 @@ import Svg from 'react-native-svg';
 import {EditButton} from "../../components/EditButton/EditButton.component";
 import {InputTextComponent} from "../../components/InputText/InputText.component";
 import {TrainingPill} from "../../components/TrainingPill/TrainingPill.component";
+import {ExercicePillComponent} from "../../components/ExercicePill/ExercicePill.component";
 
 type Props = {
     navigation: NavigationProp<any>;
@@ -24,6 +25,7 @@ export const Home: React.FC<Props> = ({navigation}) => {
                 <StatusBar style="auto"/>
                 <AddButtonComponent onTap={handleAddButtonTap} />
                 <InputTextComponent />
+                <ExercicePillComponent />
                 <TrainingPill />
                 <RemoveButton onTap={handleAddButtonTap} />
                 <EditButton onTap={handleAddButtonTap} />
