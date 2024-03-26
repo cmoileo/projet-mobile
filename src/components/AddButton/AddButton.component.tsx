@@ -1,8 +1,30 @@
-import {View} from "react-native";
+import {Button, StyleSheet, View} from "react-native";
+import { Colors } from "../Colors/Colors";
+import React from "react";
 
-export const AddButtonComponent = () => {
+type PropTypes = {
+    onTap: () => void
+}
+
+export const AddButtonComponent: React.FC<PropTypes> = ({onTap}) => {
     return (
-        <View>
+        <View style={styles.button}>
+            <Button
+                title="+"
+                onPress={onTap}
+                color={Colors["text-primary-color"]}
+            />
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    button: {
+        backgroundColor: Colors["dark-primary-color"],
+        width: 30,
+        height: 30,
+        borderRadius: 100,
+        alignItems: "center",
+        justifyContent: "center",
+    },
+})
