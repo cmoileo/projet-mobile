@@ -9,6 +9,7 @@ import {EditButton} from "../../components/EditButton/EditButton.component";
 import {InputTextComponent} from "../../components/InputText/InputText.component";
 import {TrainingPill} from "../../components/TrainingPill/TrainingPill.component";
 import {ExercicePillComponent} from "../../components/ExercicePill/ExercicePill.component";
+import {ChronoComponent} from "../../components/Chronometre/Chrono.component";
 
 type Props = {
     navigation: NavigationProp<any>;
@@ -26,6 +27,7 @@ export const Home: React.FC<Props> = ({navigation}) => {
                 <AddButtonComponent onTap={handleAddButtonTap} />
                 <InputTextComponent />
                 <ExercicePillComponent />
+                <ChronoComponent />
                 <TrainingPill />
                 <RemoveButton onTap={handleAddButtonTap} />
                 <EditButton onTap={handleAddButtonTap} />
