@@ -10,15 +10,15 @@ export const NavBar: React.FC<Props> = ({navigation}) => {
     return (
         <View style={styles.container}>
             <Button
-                title="Trainings"
-                onPress={() =>
-                    navigation.navigate('Trainings')
-                }
-            />
-            <Button
                 title="Home"
                 onPress={() =>
                     navigation.navigate('Home')
+                }
+            />
+            <Button
+                title="Trainings"
+                onPress={() =>
+                    navigation.navigate('Trainings')
                 }
             />
             <Button
