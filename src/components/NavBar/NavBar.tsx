@@ -13,7 +13,7 @@ export const NavBar: React.FC<Props> = ({navigation}) => {
         <View style={[styles.container, styles.shadowProp]}>
             <TouchableOpacity
                 onPress={() =>
-                    navigation.navigate('Home')
+                    navigation.navigate('AddNewTraining')
                 }
             >
                 <SvgXml xml={xml_dumbell} width="40" height="40" />
@@ -67,10 +67,10 @@ const styles = StyleSheet.create( {
     homeButton: {
         backgroundColor: Colors["primary-color"],
         borderRadius: 100,
-        padding: 25,
+        padding: 15,
         position: 'absolute',
         left: '52%',
-        top: "-70%",
+        top: "-50%",
     }
 })
 
