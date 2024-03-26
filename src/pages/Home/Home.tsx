@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import {NavBar} from "../../components/NavBar/NavBar";
 import {NavigationProp} from "@react-navigation/native";
 import {AddButtonComponent} from "../../components/AddButton/AddButton.component";
+import window from "@react-navigation/native/lib/typescript/src/__mocks__/window";
 
 type Props = {
     navigation: NavigationProp<any>;

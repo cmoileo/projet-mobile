@@ -21,8 +21,8 @@ export const AddButtonComponent: React.FC<PropTypes> = ({onTap}) => {
 const styles = StyleSheet.create({
     button: {
         backgroundColor: Colors["dark-primary-color"],
-        width: 30,
-        height: 30,
+        width: 40,
+        height: 40,
         borderRadius: 100,
         alignItems: "center",
         justifyContent: "center",
