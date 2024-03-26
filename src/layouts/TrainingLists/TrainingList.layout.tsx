@@ -1,6 +1,6 @@
 import {View} from "react-native";
 import {TrainingPill} from "../../components/TrainingPill/TrainingPill.component";
-
+import {AddTrainingButtonComponent} from "../../components/AddTrainingButton/AddTrainingButton.component";
 export const TrainingList: React.FC = () => {
     return (
         <View style={{
@@ -8,9 +8,10 @@ export const TrainingList: React.FC = () => {
             display: "flex",
             gap: 15,
         }}>
-            <TrainingPill />
-            <TrainingPill />
-            <TrainingPill />
+            <AddTrainingButtonComponent />
+            <TrainingPill trainingName={"Nom de la séance"} date={"12/12/2012"} exercicesCount={12} />
+            <TrainingPill trainingName={"Nom de la séance"} date={"12/12/2012"} exercicesCount={12} />
+            <TrainingPill trainingName={"Nom de la séance"} date={"12/12/2012"} exercicesCount={12} />
         </View>
     )
 }
