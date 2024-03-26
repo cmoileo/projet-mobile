@@ -1,12 +1,12 @@
 import MyStack from './routes/Routes';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import {NativeBaseProvider} from "native-base";
 
 export default function App() {
     return (
         <>
-            <SafeAreaProvider>
+            <NativeBaseProvider>
                 <MyStack/>
-            </SafeAreaProvider>
+            </NativeBaseProvider>
         </>
     );
 }

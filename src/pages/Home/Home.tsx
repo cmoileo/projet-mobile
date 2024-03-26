@@ -6,6 +6,7 @@ import {AddButtonComponent} from "../../components/AddButton/AddButton.component
 import {RemoveButton} from "../../components/RemoveButton/RemoveButton.component";
 import Svg from 'react-native-svg';
 import {EditButton} from "../../components/EditButton/EditButton.component";
+import {InputTextComponent} from "../../components/InputText/InputText.component";
 
 type Props = {
     navigation: NavigationProp<any>;
@@ -21,6 +22,7 @@ export const Home: React.FC<Props> = ({navigation}) => {
                 <Text>Home page !</Text>
                 <StatusBar style="auto"/>
                 <AddButtonComponent onTap={handleAddButtonTap} />
+                <InputTextComponent />
                 <RemoveButton onTap={handleAddButtonTap} />
                 <EditButton onTap={handleAddButtonTap} />
             </View>
