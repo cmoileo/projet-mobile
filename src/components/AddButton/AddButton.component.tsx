@@ -1,6 +1,7 @@
-import {Button, StyleSheet, View} from "react-native";
-import { Colors } from "../Colors/Colors";
+import {Button, View} from "react-native";
+import { Colors } from "../Shared/Colors";
 import React from "react";
+import { buttonStyles } from "../Shared/ButtonStyle";
 
 type PropTypes = {
     onTap: () => void
@@ -8,7 +9,7 @@ type PropTypes = {
 
 export const AddButtonComponent: React.FC<PropTypes> = ({onTap}) => {
     return (
-        <View style={styles.button}>
+        <View style={buttonStyles.button}>
             <Button
                 title="+"
                 onPress={onTap}
@@ -17,14 +18,3 @@ export const AddButtonComponent: React.FC<PropTypes> = ({onTap}) => {
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    button: {
-        backgroundColor: Colors["dark-primary-color"],
-        width: 40,
-        height: 40,
-        borderRadius: 100,
-        alignItems: "center",
-        justifyContent: "center",
-    },
-})

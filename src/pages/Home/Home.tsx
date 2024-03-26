@@ -3,7 +3,9 @@ import { StyleSheet, Text, View } from 'react-native';
 import {NavBar} from "../../components/NavBar/NavBar";
 import {NavigationProp} from "@react-navigation/native";
 import {AddButtonComponent} from "../../components/AddButton/AddButton.component";
-import window from "@react-navigation/native/lib/typescript/src/__mocks__/window";
+import {RemoveButton} from "../../components/RemoveButton/RemoveButton.component";
+import Svg from 'react-native-svg';
+import {EditButton} from "../../components/EditButton/EditButton.component";
 
 type Props = {
     navigation: NavigationProp<any>;
@@ -19,6 +21,8 @@ export const Home: React.FC<Props> = ({navigation}) => {
                 <Text>Home page !</Text>
                 <StatusBar style="auto"/>
                 <AddButtonComponent onTap={handleAddButtonTap} />
+                <RemoveButton onTap={handleAddButtonTap} />
+                <EditButton onTap={handleAddButtonTap} />
             </View>
             <NavBar navigation={navigation} />
         </>
