@@ -3,7 +3,7 @@ import {Colors} from "./Colors";
 
 export const appTitleText = StyleSheet.create({
     Title: {
-        fontSize: 40,
+        fontSize: 30,
         fontWeight: 'bold',
         color: Colors["primary-text-color"],
         backgroundColor: 'transparent',
@@ -15,7 +15,7 @@ export const appTitleText = StyleSheet.create({
 
 export const pageTitleText = StyleSheet.create({
     Title: {
-        fontSize: 30,
+        fontSize: 25,
         fontWeight: 'bold',
         color: Colors["primary-text-color"],
         backgroundColor: 'transparent',
@@ -34,10 +34,10 @@ export const mainWrapper = StyleSheet.create({
 export const mainText = StyleSheet.create({
     Secondary: {
         color: Colors["primary-text-color"],
-        fontSize: 18,
+        fontSize: 16,
     },
     Main: {
         color: Colors["primary-color"],
-        fontSize: 25,
+        fontSize: 18,
     }
 })
