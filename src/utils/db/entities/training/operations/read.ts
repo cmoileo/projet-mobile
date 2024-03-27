@@ -8,8 +8,6 @@ const readByUserId = async (userId: string) => {
         where("userId", "==", userId)
     );
     const trainingDocs = await getDocs(trainingQuery);
-    console.log("Training Docs", trainingDocs.docs);
-    console.log("User id", userId);
     if (trainingDocs.empty) return [];
     const data = await trainingDocs.docs.map((doc) => doc.data());
     return data;

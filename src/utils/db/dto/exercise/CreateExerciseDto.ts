@@ -2,7 +2,7 @@ export class CreateExerciseDto {
   constructor(
     name: string,
     date: Date,
-    repetions: number,
+    repetions?: number,
     weight?: number,
     breakTime?: number
   ) {
@@ -14,7 +14,7 @@ export class CreateExerciseDto {
   }
     name: string;
   date: Date;
-  repetions: number;
+  repetions?: number;
   weight: number;
   breakTime: number;
 }

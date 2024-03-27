@@ -23,7 +23,6 @@ export const TrainingList: React.FC<Props> = ({navigation}) => {
                 if (!userId) return
                 const trainingsDoc = await readByUserId(userId);
                 setTrainings(trainingsDoc);
-                console.log("Trainings !!!", trainingsDoc);
             } catch (error) {
                 console.log("Error fetching trainings", error);
             }
