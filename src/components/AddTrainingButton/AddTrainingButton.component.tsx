@@ -1,10 +1,15 @@
 import {StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import {mainText} from "../Shared/SharedStyle";
 import {Colors} from "../Shared/Colors";
+import {NavigationProp} from "@react-navigation/native";
 
-export const AddTrainingButtonComponent = () => {
+type Props = {
+    navigation: NavigationProp<any>;
+};
+
+export const AddTrainingButtonComponent: React.FC<Props> = ({navigation}) => {
     return (
-        <TouchableOpacity style={styles.container}>
+        <TouchableOpacity style={styles.container} onPress={() => navigation.navigate("AddNewTraining")}>
             <Text style={mainText.Main}>+ Nouveau Training</Text>
         </TouchableOpacity>
     )
