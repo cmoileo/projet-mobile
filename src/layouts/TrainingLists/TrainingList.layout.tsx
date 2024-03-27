@@ -20,6 +20,7 @@ export const TrainingList: React.FC<Props> = ({navigation}) => {
     useEffect(() => {
         const fetchTrainings = async () => {
             try {
+                if (!userId) return
                 const trainingsDoc = await readByUserId(userId);
                 setTrainings(trainingsDoc);
                 console.log("Trainings !!!", trainingsDoc);
@@ -29,7 +30,7 @@ export const TrainingList: React.FC<Props> = ({navigation}) => {
         };
 
         fetchTrainings();
-    }, []);
+    }, [userId]);
 
     return (
         <ScrollView>
@@ -43,7 +44,7 @@ export const TrainingList: React.FC<Props> = ({navigation}) => {
             <AddTrainingButtonComponent navigation={navigation} />
             {trainings.map((training: any) => {
                 return (
-                    <TrainingPill key={training.id} trainingName={training.name} date={training.Date} exercicesCount={training.exercises.length} />
+                    <TrainingPill key={training.id} trainingName={training.name} date={training.date} exercicesCount={training.exercises.length} />
                 )
             })}
         </View>

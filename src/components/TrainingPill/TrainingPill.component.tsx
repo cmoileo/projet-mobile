@@ -6,16 +6,18 @@ import { mainText } from "../Shared/SharedStyle";
 
 type Props = {
     trainingName: string;
-    date: string;
+    date: any;
     exercicesCount: number;
 }
 
 export const TrainingPill: React.FC<Props> = ({trainingName, date, exercicesCount}) => {
+    const formatedDate = new Date(date.seconds * 1000);
+    const formatedDateToString = formatedDate.toLocaleDateString("fr-FR");
     return (
         <View style={styles.container}>
             <Text style={mainText.Main}>{trainingName}</Text>
             <View style={styles.wrapper}>
-                <Text style={mainText.Secondary}>{date}</Text>
+                <Text style={mainText.Secondary}>{formatedDateToString}</Text>
                 <Text style={mainText.Secondary}>-</Text>
                 <Text style={mainText.Secondary}>{exercicesCount} exercices</Text>
             </View>
