@@ -9,4 +9,5 @@ export type Exercise = {
 export type Training = {
   id: string;
   exercises: Exercise[];
+  userId: string;
 };

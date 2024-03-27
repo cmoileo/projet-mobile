@@ -3,7 +3,7 @@ import db from "../../../config/firebase";
 
 const read = async () => {
   try {
-    const trainingDocs = await getDocs(collection(db, "training"));
+    const trainingDocs = await getDocs(collection(db, "trainings"));
     if (trainingDocs.empty) return [];
     const data = trainingDocs.docs.map((doc) => doc.data());
     return data;

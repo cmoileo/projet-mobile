@@ -3,7 +3,7 @@ import db from "../../../config/firebase";
 
 const remove = async (id: string) => {
   try {
-    const docRef = doc(db, "training", id);
+    const docRef = doc(db, "trainings", id);
     await deleteDoc(docRef);
     return id;
   } catch (error) {

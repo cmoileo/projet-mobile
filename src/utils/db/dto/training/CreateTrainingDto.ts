@@ -1,7 +1,7 @@
 import { CreateExerciseDto } from "../exercise/CreateExerciseDto";
 
 export class CreateTrainingDto {
-  constructor(exercises: CreateExerciseDto[]) {
+  constructor(exercises: CreateExerciseDto[], userId: string) {
     this.exercises = exercises.map(
       (exercise) =>
         new CreateExerciseDto(
@@ -11,6 +11,8 @@ export class CreateTrainingDto {
           exercise.breakTime
         )
     );
+    this.userId = userId;
   }
   exercises: CreateExerciseDto[];
+  userId: string;
 }

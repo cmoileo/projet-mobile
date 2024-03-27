@@ -4,8 +4,8 @@ import { CreateTrainingDto } from "../../../dto/training/CreateTrainingDto";
 
 const create = async (data: CreateTrainingDto) => {
   try {
-    const newDocRef = doc(db, "training");
-    const newTraining = new CreateTrainingDto(data.exercises);
+    const newDocRef = doc(db, "trainings");
+    const newTraining = new CreateTrainingDto(data.exercises, data.userId);
     const docRef = await setDoc(newDocRef, newTraining);
     return docRef;
   } catch (error) {
