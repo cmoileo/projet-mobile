@@ -1,78 +1,70 @@
-import {View, StyleSheet, TouchableOpacity} from "react-native";
-import {NavigationProp} from "@react-navigation/native";
+import { View, StyleSheet, TouchableOpacity } from "react-native";
+import { NavigationProp } from "@react-navigation/native";
 import React from "react";
-import {Colors} from "../Shared/Colors";
-import {SvgXml} from "react-native-svg";
+import { Colors } from "../Shared/Colors";
+import { SvgXml } from "react-native-svg";
 
 type Props = {
-    navigation: NavigationProp<any>;
+  navigation: NavigationProp<any>;
 };
 
-export const NavBar: React.FC<Props> = ({navigation}) => {
-    return (
-        <View style={[styles.container, styles.shadowProp]}>
-            <TouchableOpacity
-                onPress={() =>
-                    navigation.navigate('AddNewTraining')
-                }
-            >
-                <SvgXml xml={xml_dumbell} width="40" height="40" />
-            </TouchableOpacity>
+export const NavBar: React.FC<Props> = ({ navigation }) => {
+  return (
+    <View style={[styles.container, styles.shadowProp]}>
+      <TouchableOpacity onPress={() => navigation.navigate("AddNewTraining")}>
+        <SvgXml xml={xml_dumbell} width="40" height="40" />
+      </TouchableOpacity>
 
-            <TouchableOpacity
-                style={styles.homeButton}
-                onPress={() =>
-                    navigation.navigate('Home')
-                }
-            >
-                <SvgXml xml={xml_home} width="40" height="40" />
-            </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.homeButton}
+        onPress={() => navigation.navigate("Home")}
+      >
+        <SvgXml xml={xml_home} width="40" height="40" />
+      </TouchableOpacity>
 
-            <TouchableOpacity
-                onPress={() =>
-                    navigation.navigate('Home')
-                }
-            >
-                <SvgXml xml={xml_graph} width="40" height="40" />
-            </TouchableOpacity>
-        </View>
-    );
-}
+      <TouchableOpacity
+        onPress={() => navigation.navigate("ExerciceStatsList")}
+      >
+        <SvgXml xml={xml_graph} width="40" height="40" />
+      </TouchableOpacity>
+    </View>
+  );
+};
 
-const styles = StyleSheet.create( {
-    container: {
-        display: "flex",
-        flexDirection: "row",
-        backgroundColor: "white",
-        alignItems: 'center',
-        paddingBottom: 30,
-        paddingTop: 20,
-        position: 'absolute',
-        bottom: 0,
-        width: '100%',
-        paddingHorizontal: 50,
-        justifyContent: 'space-between',
+const styles = StyleSheet.create({
+  container: {
+    display: "flex",
+    flexDirection: "row",
+    backgroundColor: "white",
+    alignItems: "center",
+    paddingBottom: 30,
+    paddingTop: 20,
+    position: "absolute",
+    bottom: 0,
+    width: "100%",
+    paddingHorizontal: 50,
+    justifyContent: "space-between",
+  },
+  shadowProp: {
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
     },
-    shadowProp: {
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
 
-        elevation: 5,
-    },
-    homeButton: {
-        backgroundColor: Colors["primary-color"],
-        borderRadius: 100,
-        padding: 15,
-        position: 'absolute',
-        left: '52%',
-        top: "-50%",
-    }
-})
+    elevation: 5,
+  },
+  homeButton: {
+    backgroundColor: Colors["primary-color"],
+    borderRadius: 100,
+    padding: 15,
+    position: "absolute",
+    left: "52%",
+    top: "-50%",
+  },
+});
 
 const xml_dumbell = `<svg width="40" height="41" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_5_76)">
@@ -90,7 +82,7 @@ const xml_dumbell = `<svg width="40" height="41" viewBox="0 0 40 41" fill="none"
 </clipPath>
 </defs>
 </svg>
-`
+`;
 
 const xml_home = `<svg width="40" height="40" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_11_253)">
@@ -104,7 +96,7 @@ const xml_home = `<svg width="40" height="40" viewBox="0 0 40 41" fill="none" xm
 </clipPath>
 </defs>
 </svg>
-`
+`;
 
 const xml_graph = `<svg width="40" height="41" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_11_267)">
@@ -120,4 +112,4 @@ const xml_graph = `<svg width="40" height="41" viewBox="0 0 40 41" fill="none" x
 </clipPath>
 </defs>
 </svg>
-`
+`;
