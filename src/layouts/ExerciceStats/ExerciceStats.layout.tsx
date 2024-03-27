@@ -2,16 +2,22 @@ import { NavigationProp } from "@react-navigation/native";
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import Chart from "../../components/Chart/Chart";
+import { UserContext } from "../../App";
+import ChartWeight from "../../components/Chart/ChartWeight";
 
 type Props = {
   exerciceId: string;
 };
 
 const ExerciceStatsLayout: React.FC<Props> = ({ exerciceId }) => {
+  const [dataWeight, setDataWeight] = React.useState([]);
+  const context = React.useContext(UserContext);
+  const userId = context;
+  React.useEffect(() => {}, []);
   return (
     <View style={styles.container}>
       <View style={styles.wrapper}>
-        <Chart />
+        <ChartWeight data={dataWeight} />
       </View>
     </View>
   );
