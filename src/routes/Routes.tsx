@@ -11,12 +11,12 @@ const MyStack = () => {
         <NavigationContainer>
             <Stack.Navigator>
                 <Stack.Screen
-                    name="AddNewTraining"
-                    component={AddNewTraining}
-                />
-                <Stack.Screen
                     name="Home"
                     component={HomePage}
+                />
+                <Stack.Screen
+                    name="AddNewTraining"
+                    component={AddNewTraining}
                 />
             </Stack.Navigator>
         </NavigationContainer>
