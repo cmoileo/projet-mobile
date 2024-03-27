@@ -1,23 +1,38 @@
-import {StyleSheet, Text, View} from "react-native";
+import {StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import React from "react";
 import {Colors} from "../Shared/Colors";
 import {mainText, pageTitleText} from "../Shared/SharedStyle";
+import {SvgXml} from "react-native-svg";
 
 type Props = {
     title: string;
-    repetition_number: number;
     index: number;
-    rest_time: string;
+    chosenExercices: string[] | null;
+    setChosenExercices: React.Dispatch<React.SetStateAction<string[] | null>>;
 }
 
-export const ExercicePillComponent: React.FC<Props> = ({title, repetition_number, index, rest_time}) => {
+export const ExercicePillComponent: React.FC<Props> = ({title, index, chosenExercices, setChosenExercices}) => {
+    const handleDeleteChosenExercice = (index: number): void => {
+        if (chosenExercices === null) return;
+        const updatedChosenExercices = chosenExercices?.filter((_, i) => i !== index);
+        setChosenExercices(updatedChosenExercices);
+    }
     return (
         <View style={styles.container}>
             <View style={styles.wrapper}>
                 <Text style={{color: Colors["primary-color"]}}>{title}</Text>
-                <Text>{repetition_number} rep. - {rest_time}</Text>
             </View>
-            <Text style={styles.indexText}>#{index}</Text>
+            <View style={{
+                display: "flex",
+                flexDirection: "row",
+                gap: 10,
+                alignItems: "center",
+            }}>
+                <Text style={styles.indexText}>#{index + 1}</Text>
+                <TouchableOpacity onPress={() => handleDeleteChosenExercice(index)}>
+                    <SvgXml xml={xml} width="20" height="20" />
+                </TouchableOpacity>
+            </View>
         </View>
     );
 }
@@ -46,3 +61,16 @@ const styles = StyleSheet.create({
         gap: 5,
     }
 })
+
+const xml = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_41_857)">
+<path d="M18 6L6 18" stroke="#3782FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M6 6L18 18" stroke="#3782FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<clipPath id="clip0_41_857">
+<rect width="24" height="24" fill="white"/>
+</clipPath>
+</defs>
+</svg>
+`
