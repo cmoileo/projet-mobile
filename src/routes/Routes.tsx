@@ -1,11 +1,8 @@
 import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {Home} from "../pages/Home/Home";
-import {Training} from "../pages/Training/Training";
-import {ExerciceList} from "../pages/ExercicesList/ExerciceList";
-import {TrainingExercices} from "../pages/TrainingExercices/TrainingExercices";
-import {Exercice} from "../pages/ExercicesList/:id/Exercice";
+import {HomePage} from "../pages/Home/Home.page";
+import {AddNewTraining} from "../pages/AddNewTraining/AddNewTraining.page";
 
 const Stack = createNativeStackNavigator();
 
@@ -15,21 +12,12 @@ const MyStack = () => {
             <Stack.Navigator>
                 <Stack.Screen
                     name="Home"
-                    component={Home}
+                    component={HomePage}
                 />
                 <Stack.Screen
-                    name="Trainings"
-                    component={Training} />
-                <Stack.Screen
-                    name="ExerciceList"
-                    component={ExerciceList} />
-                <Stack.Screen
-                    name={"Exercice"}
-                    component={Exercice}
+                    name="AddNewTraining"
+                    component={AddNewTraining}
                 />
-                <Stack.Screen
-                    name={"TrainingExercices"}
-                    component={TrainingExercices} />
             </Stack.Navigator>
         </NavigationContainer>
     );

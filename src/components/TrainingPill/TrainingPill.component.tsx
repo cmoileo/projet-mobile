@@ -1,15 +1,24 @@
 import {StyleSheet, Text, View} from "react-native";
 import {SvgXml} from "react-native-svg";
 import {Colors} from "../Shared/Colors";
+import React from "react";
+import { mainText } from "../Shared/SharedStyle";
 
-export const TrainingPill = () => {
+type Props = {
+    trainingName: string;
+    date: string;
+    exercicesCount: number;
+}
+
+export const TrainingPill: React.FC<Props> = ({trainingName, date, exercicesCount}) => {
     return (
         <View style={styles.container}>
+            <Text style={mainText.Main}>{trainingName}</Text>
             <View style={styles.wrapper}>
-                <View style={styles.round}></View>
-                <Text style={styles.text}>Training 1</Text>
+                <Text style={mainText.Secondary}>{date}</Text>
+                <Text style={mainText.Secondary}>-</Text>
+                <Text style={mainText.Secondary}>{exercicesCount} exercices</Text>
             </View>
-            <SvgXml xml={xml} />
         </View>
     );
 }
@@ -17,29 +26,19 @@ export const TrainingPill = () => {
 const styles = StyleSheet.create({
     container: {
         display: "flex",
-        flexDirection: "row",
-        justifyContent: "space-between",
-        alignItems: "center",
-        width: "50%",
+        flexDirection: "column",
+        alignItems: "flex-start",
+        gap: 10,
+        width: "100%",
+        borderStyle: "solid",
+        borderWidth: 1,
+        padding: 15,
+        borderRadius: 10,
+        borderColor: Colors["divider-color"],
     },
     wrapper: {
         display: "flex",
         flexDirection: "row",
-        alignItems: "center",
         gap: 10,
-    },
-    round: {
-        borderRadius: 10,
-        backgroundColor: Colors["dark-primary-color"],
-        width: 10,
-        height: 10,
-    },
-    text: {
-        color: Colors["primary-text-color"],
-        fontSize: 16,
     }
 })
-
-const xml = `<svg fill=${Colors["dark-primary-color"]} width="15px" height="15px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
-    <path d="M8.489 31.975c-0.271 0-0.549-0.107-0.757-0.316-0.417-0.417-0.417-1.098 0-1.515l14.258-14.264-14.050-14.050c-0.417-0.417-0.417-1.098 0-1.515s1.098-0.417 1.515 0l14.807 14.807c0.417 0.417 0.417 1.098 0 1.515l-15.015 15.022c-0.208 0.208-0.486 0.316-0.757 0.316z"></path>
-</svg>`
