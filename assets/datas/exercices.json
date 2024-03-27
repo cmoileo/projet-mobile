@@ -1,0 +1,152 @@
+[
+  {
+    "id": 1,
+    "name": "Développé couché",
+    "targeted_muscles": ["pectoraux", "triceps", "Deltoïdes antérieurs"]
+  },
+  {
+    "id": 2,
+    "name": "Squats",
+    "targeted_muscles": ["quadriceps", "ischios-jambiers", "fessiers"]
+  },
+  {
+    "id": 3,
+    "name": "Traction",
+    "targeted_muscles": ["dorsaux", "biceps", "avant-bras"]
+  },
+  {
+    "id": 4,
+    "name": "Soulevé de terre",
+    "targeted_muscles": ["lombaires", "trapèzes", "fessiers"]
+  },
+  {
+    "id": 5,
+    "name": "Presse à cuisses",
+    "targeted_muscles": ["quadriceps", "adducteurs", "fessiers"]
+  },
+  {
+    "id": 6,
+    "name": "Élévations latérales",
+    "targeted_muscles": ["deltoïdes latéraux", "trapèzes", "épaules"]
+  },
+  {
+    "id": 7,
+    "name": "Fentes",
+    "targeted_muscles": ["quadriceps", "ischios-jambiers", "fessiers"]
+  },
+  {
+    "id": 8,
+    "name": "Développé militaire",
+    "targeted_muscles": ["deltoïdes", "trapèzes", "triceps"]
+  },
+  {
+    "id": 9,
+    "name": "Tirage vertical",
+    "targeted_muscles": ["dorsaux", "biceps", "avant-bras"]
+  },
+  {
+    "id": 10,
+    "name": "Extensions des jambes",
+    "targeted_muscles": ["quadriceps", "ischios-jambiers"]
+  },
+  {
+    "id": 11,
+    "name": "Curl biceps",
+    "targeted_muscles": ["biceps", "avant-bras"]
+  },
+  {
+    "id": 12,
+    "name": "Crunchs",
+    "targeted_muscles": ["abdominaux"]
+  },
+  {
+    "id": 13,
+    "name": "Soulevé de terre jambes tendues",
+    "targeted_muscles": ["ischios-jambiers", "lombaires"]
+  },
+  {
+    "id": 14,
+    "name": "Pompes",
+    "targeted_muscles": ["pectoraux", "deltoïdes", "triceps"]
+  },
+  {
+    "id": 15,
+    "name": "Curl haltères",
+    "targeted_muscles": ["biceps", "avant-bras"]
+  },
+  {
+    "id": 16,
+    "name": "Élévations frontales",
+    "targeted_muscles": ["deltoïdes antérieurs", "trapèzes", "épaules"]
+  },
+  {
+    "id": 17,
+    "name": "Tirage horizontal",
+    "targeted_muscles": ["dorsaux", "trapèzes", "rhomboïdes"]
+  },
+  {
+    "id": 18,
+    "name": "Leg curl",
+    "targeted_muscles": ["ischios-jambiers"]
+  },
+  {
+    "id": 19,
+    "name": "Dips",
+    "targeted_muscles": ["pectoraux", "triceps"]
+  },
+  {
+    "id": 20,
+    "name": "Extension des triceps à la poulie haute",
+    "targeted_muscles": ["triceps"]
+  },
+  {
+    "id": 21,
+    "name": "Planche",
+    "targeted_muscles": ["abdominaux", "lombaires", "deltoïdes"]
+  },
+  {
+    "id": 22,
+    "name": "Tirage menton",
+    "targeted_muscles": ["dorsaux", "deltoïdes", "biceps"]
+  },
+  {
+    "id": 23,
+    "name": "Reverse curl",
+    "targeted_muscles": ["avant-bras", "brachial"]
+  },
+  {
+    "id": 24,
+    "name": "Squat jump",
+    "targeted_muscles": ["quadriceps", "ischios-jambiers", "fessiers"]
+  },
+  {
+    "id": 25,
+    "name": "Développé incliné",
+    "targeted_muscles": ["pectoraux", "deltoïdes", "triceps"]
+  },
+  {
+    "id": 26,
+    "name": "Shrugs",
+    "targeted_muscles": ["trapèzes"]
+  },
+  {
+    "id": 27,
+    "name": "Tirage poulie basse",
+    "targeted_muscles": ["dorsaux", "biceps", "avant-bras"]
+  },
+  {
+    "id": 28,
+    "name": "Leg press",
+    "targeted_muscles": ["quadriceps", "ischios-jambiers", "fessiers"]
+  },
+  {
+    "id": 29,
+    "name": "Curl marteau",
+    "targeted_muscles": ["biceps", "avant-bras"]
+  },
+  {
+    "id": 30,
+    "name": "Extensions lombaires",
+    "targeted_muscles": ["lombaires"]
+  }
+]

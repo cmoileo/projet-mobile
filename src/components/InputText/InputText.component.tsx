@@ -1,24 +1,29 @@
-import {TextInput, View} from "react-native";
+import {StyleSheet, TextInput, View} from "react-native";
 import {Colors} from "../Shared/Colors";
 
 export const InputTextComponent = () => {
     return (
         <View>
-            <TextInput style={styles.input} placeholder="Enter text here" />
+            <TextInput
+                style={styles.input}
+                placeholder="TITRE"
+                placeholderTextColor="#3782FF"
+            />
         </View>
     );
 }
 
-const styles = {
+const styles = StyleSheet.create({
     input: {
-        height: 40,
         borderColor: Colors["divider-color"],
         color: Colors["primary-text-color"],
-        margin: 12,
         borderWidth: 1,
-        width: 300,
-        padding: 10,
+        width: "100%",
+        paddingTop: 10,
+        paddingLeft: 10,
+        paddingBottom: 40,
         borderRadius: 5,
+        borderStyle: "dashed",
 
     }
-}
+})
