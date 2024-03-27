@@ -6,10 +6,10 @@ import {nanoid} from "nanoid";
 import { customAlphabet } from 'nanoid/non-secure';
 
 
-export const UserContext = React.createContext<string | null>(null);
+export const UserContext = React.createContext<string>("");
 
 export default function App() {
-    const [userId, setUserId] = React.useState<string | null>(null);
+    const [userId, setUserId] = React.useState<string>("");
 
     useEffect(() => {
         const fetchUserId = async () => {

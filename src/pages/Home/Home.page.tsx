@@ -23,7 +23,7 @@ export const HomePage: React.FC<Props> = ({navigation}) => {
             <View style={mainWrapper.MainWrapper}>
                 <AppTitleText />
                 <PageTitle label={"🏋️Mes Trainings"} />
-                <TrainingList />
+                <TrainingList navigation={navigation} />
             </View>
             <NavBar navigation={navigation} />
         </>

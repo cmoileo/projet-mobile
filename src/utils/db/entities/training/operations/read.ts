@@ -1,15 +1,20 @@
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, query, where } from "firebase/firestore";
 import db from "../../../config/firebase";
 
-const read = async () => {
+const readByUserId = async (userId: string) => {
   try {
-    const trainingDocs = await getDocs(collection(db, "trainings"));
+    const trainingQuery = query(
+        collection(db, "trainings"),
+        where("userId", "==", userId)
+    );
+    const trainingDocs = await getDocs(trainingQuery);
+    console.log("Training Docs", trainingDocs.docs, userId);
     if (trainingDocs.empty) return [];
-    const data = trainingDocs.docs.map((doc) => doc.data());
+    const data = await trainingDocs.docs.map((doc) => doc.data());
     return data;
   } catch (error) {
     throw error;
   }
 };
 
-export default read;
+export default readByUserId;
