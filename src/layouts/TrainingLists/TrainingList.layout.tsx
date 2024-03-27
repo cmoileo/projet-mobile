@@ -1,8 +1,8 @@
 import {View, ScrollView, Text} from "react-native";
 import {TrainingPill} from "../../components/TrainingPill/TrainingPill.component";
 import {AddTrainingButtonComponent} from "../../components/AddTrainingButton/AddTrainingButton.component";
-import React, {useEffect, useState} from "react";
-import {UserContext} from "../../App";
+import React, {useContext, useEffect, useState} from "react";
+import {TrainingContext, UserContext} from "../../App";
 import readByUserId from "../../utils/db/entities/training/operations/read";
 import {NavigationProp} from "@react-navigation/native";
 import firebase from "firebase/compat";
@@ -13,23 +13,9 @@ type Props = {
 };
 
 export const TrainingList: React.FC<Props> = ({navigation}) => {
-    const [trainings, setTrainings] = useState<DocumentData>([]);
+    const trainings = useContext(TrainingContext);
 
     const userId = React.useContext(UserContext);
-
-    useEffect(() => {
-        const fetchTrainings = async () => {
-            try {
-                if (!userId) return
-                const trainingsDoc = await readByUserId(userId);
-                setTrainings(trainingsDoc);
-            } catch (error) {
-                console.log("Error fetching trainings", error);
-            }
-        };
-
-        fetchTrainings();
-    }, [userId]);
 
     return (
         <ScrollView>
