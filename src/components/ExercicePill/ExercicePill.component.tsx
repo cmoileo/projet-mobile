@@ -3,12 +3,13 @@ import React from "react";
 import {Colors} from "../Shared/Colors";
 import {mainText, pageTitleText} from "../Shared/SharedStyle";
 import {SvgXml} from "react-native-svg";
+import {CreateExerciseDto} from "../../utils/db/dto/exercise/CreateExerciseDto";
 
 type Props = {
     title: string;
     index: number;
-    chosenExercices: string[] | null;
-    setChosenExercices: React.Dispatch<React.SetStateAction<string[] | null>>;
+    chosenExercices: CreateExerciseDto[] | null;
+    setChosenExercices: React.Dispatch<React.SetStateAction<CreateExerciseDto[] | null>>;
 }
 
 export const ExercicePillComponent: React.FC<Props> = ({title, index, chosenExercices, setChosenExercices}) => {

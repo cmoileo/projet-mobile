@@ -15,8 +15,6 @@ type Props = {
 export const TrainingList: React.FC<Props> = ({navigation}) => {
     const trainings = useContext(TrainingContext).trainings;
 
-    const userId = React.useContext(UserContext);
-
     return (
         <ScrollView>
         <View style={{

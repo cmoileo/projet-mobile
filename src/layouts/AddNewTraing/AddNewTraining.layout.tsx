@@ -8,17 +8,18 @@ import create from "../../utils/db/entities/training/operations/create";
 import {TrainingContext, UserContext} from "../../App";
 import readByUserId from "../../utils/db/entities/training/operations/read";
 import {NavigationProp} from "@react-navigation/native";
+import {CreateExerciseDto} from "../../utils/db/dto/exercise/CreateExerciseDto";
 
 export const AddNewTrainingLayout = ({navigation}: {navigation: NavigationProp<any>}) => {
     const setTrainings = useContext(TrainingContext).setTrainings;
     const userId = useContext(UserContext);
-    const [chosenExercices, setChosenExercices] = useState<string[] | null>(null)
+    const [chosenExercices, setChosenExercices] = useState<CreateExerciseDto[] | null>(null)
     const [isModalVisible, setIsModalVisible] = useState<"none" | "flex">("none");
     const [trainingName, setTrainingName] = useState<string>("")
 
 
     const handleCreateExercice = async () => {
-        if (!chosenExercices || chosenExercices.length === 0 || typeof userId !== "string") return;
+        if (chosenExercices == null || typeof userId !== "string") return;
         await create({
             exercises: chosenExercices,
             name: trainingName,
@@ -39,10 +40,10 @@ export const AddNewTrainingLayout = ({navigation}: {navigation: NavigationProp<a
                             <Text>+ Ajouter un exercice</Text>
                         </TouchableOpacity>
                         {
-                           chosenExercices && chosenExercices.map((exercice, index: number) => {
-                            return (
-                                <ExercicePillComponent index={index} title={exercice} chosenExercices={chosenExercices} setChosenExercices={setChosenExercices}/>
-                            );
+                           chosenExercices && chosenExercices.map((exercice, index) => {
+                                return (
+                                    <ExercicePillComponent key={index} title={exercice.name} index={index} chosenExercices={chosenExercices} setChosenExercices={setChosenExercices} />
+                                )
                         })}
                     </View>
                 </ScrollView>

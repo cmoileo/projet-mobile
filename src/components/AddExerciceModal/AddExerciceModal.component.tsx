@@ -13,21 +13,24 @@ import Exercices from "../../../assets/datas/exercices.json";
 import {SvgXml} from "react-native-svg";
 import {Colors} from "../Shared/Colors";
 import {Dispatch, SetStateAction} from "react";
+import {CreateExerciseDto} from "../../utils/db/dto/exercise/CreateExerciseDto";
 
 export const AddExerciceModalComponent = ({isModalVisible, setIsModalVisible, chosenExercices, setChosenExercices}: {
     isModalVisible: "flex" | "none",
     setIsModalVisible: Dispatch<SetStateAction<"none" | "flex">>,
-    chosenExercices: string[] | null,
-    setChosenExercices: Dispatch<SetStateAction<string[] | null>>
+    chosenExercices: CreateExerciseDto[] | null,
+    setChosenExercices: Dispatch<SetStateAction<CreateExerciseDto[] | null>>
     }) => {
 
     const handleExercicePress = (index: number): void => {
         setIsModalVisible("none");
         if (chosenExercices === null) {
-            setChosenExercices([Exercices[index].name]);
+            const newExercice = new CreateExerciseDto(Exercices[index].name, new Date());
+            setChosenExercices([newExercice]);
             return;
         }
-        setChosenExercices([...chosenExercices, Exercices[index].name]);
+        const newExercice = new CreateExerciseDto(Exercices[index].name, new Date());
+        setChosenExercices([...chosenExercices, newExercice]);
     }
 
     return (
