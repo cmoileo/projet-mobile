@@ -54,7 +54,7 @@ export default function App() {
 
     return (
         <UserContext.Provider value={userId}>
-            <TrainingContext.Provider value={trainings}>
+            <TrainingContext.Provider value={{trainings, setTrainings}}>
                 <NativeBaseProvider>
                     <MyStack />
                 </NativeBaseProvider>

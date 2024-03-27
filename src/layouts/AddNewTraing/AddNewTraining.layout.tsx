@@ -5,9 +5,12 @@ import {ExercicePillComponent} from "../../components/ExercicePill/ExercicePill.
 import React, {useContext, useState} from "react";
 import {AddExerciceModalComponent} from "../../components/AddExerciceModal/AddExerciceModal.component";
 import create from "../../utils/db/entities/training/operations/create";
-import {UserContext} from "../../App";
+import {TrainingContext, UserContext} from "../../App";
+import readByUserId from "../../utils/db/entities/training/operations/read";
+import {NavigationProp} from "@react-navigation/native";
 
-export const AddNewTrainingLayout = () => {
+export const AddNewTrainingLayout = ({navigation}: {navigation: NavigationProp<any>}) => {
+    const setTrainings = useContext(TrainingContext).setTrainings;
     const userId = useContext(UserContext);
     const [chosenExercices, setChosenExercices] = useState<string[] | null>(null)
     const [isModalVisible, setIsModalVisible] = useState<"none" | "flex">("none");
@@ -22,6 +25,9 @@ export const AddNewTrainingLayout = () => {
             userId: userId,
             date: new Date(),
         })
+        const trainingsDoc = await readByUserId(userId);
+        setTrainings(trainingsDoc);
+        navigation.navigate("Home");
     }
     return (
         <>
