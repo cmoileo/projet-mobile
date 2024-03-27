@@ -1,6 +1,7 @@
 import {Text, View, StyleSheet, Button} from "react-native";
 import {NavigationProp} from "@react-navigation/native";
 import React from "react";
+import {Colors} from "../Shared/Colors";
 
 type Props = {
     navigation: NavigationProp<any>;
@@ -10,18 +11,21 @@ export const NavBar: React.FC<Props> = ({navigation}) => {
     return (
         <View style={styles.container}>
             <Button
-                title="Trainings"
-                onPress={() =>
-                    navigation.navigate('Trainings')
-                }
-            />
-            <Button
+                color={Colors["primary-text-color"]}
                 title="Home"
                 onPress={() =>
                     navigation.navigate('Home')
                 }
             />
             <Button
+                color={Colors["primary-text-color"]}
+                title="Trainings"
+                onPress={() =>
+                    navigation.navigate('Trainings')
+                }
+            />
+            <Button
+                color={Colors["primary-text-color"]}
                 title="Exercises"
                 onPress={() =>
                     navigation.navigate('ExerciceList')
@@ -35,7 +39,7 @@ const styles = StyleSheet.create( {
     container: {
         display: "flex",
         flexDirection: "row",
-        backgroundColor: '#b3b7bd',
+        backgroundColor: Colors["divider-color"],
         alignItems: 'center',
         paddingBottom: 50,
         paddingTop: 20,
