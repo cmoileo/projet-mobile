@@ -4,13 +4,14 @@ export class CreateTrainingDto {
   constructor(exercises: CreateExerciseDto[], userId: string, name: string, date: Date) {
     this.exercises = exercises.map(
       (exercise) => {
-          return new CreateExerciseDto(
-              exercise.name,
-              exercise.date,
-              exercise.repetions,
-              exercise.weight,
-              exercise.breakTime
-          )
+        const createdExercise = {
+          name: exercise.name,
+          date: exercise.date,
+          repetions: exercise.repetions,
+          weight: exercise.weight,
+          breakTime: exercise.breakTime
+        }
+          return createdExercise;
       }
     );
     this.userId = userId;

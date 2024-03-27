@@ -6,7 +6,18 @@ const create = async (data: CreateTrainingDto) => {
   try {
     const newDocRef = collection(db, "trainings");
     const newTraining = {
-      exercises: data.exercises,
+      exercises: data.exercises.map(
+          (exercise) => {
+            const createdExercise = {
+              name: exercise.name,
+              date: exercise.date,
+              repetions: exercise.repetions,
+              weight: exercise.weight,
+              breakTime: exercise.breakTime
+            }
+            return createdExercise;
+          }
+      ),
       userId: data.userId,
       name: data.name,
       date: data.date,

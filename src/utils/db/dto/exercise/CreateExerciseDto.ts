@@ -8,13 +8,13 @@ export class CreateExerciseDto {
   ) {
     this.name = name
     this.date = date;
-    this.repetions = repetions;
+    this.repetions = repetions || 0;
     this.weight = weight || 0;
     this.breakTime = breakTime || 0;
   }
     name: string;
   date: Date;
-  repetions?: number;
+  repetions: number
   weight: number;
   breakTime: number;
 }
