@@ -1,4 +1,4 @@
-import {StyleSheet, Text, TouchableOpacity} from "react-native";
+import {StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import {mainText} from "../Shared/SharedStyle";
 import {Colors} from "../Shared/Colors";
 

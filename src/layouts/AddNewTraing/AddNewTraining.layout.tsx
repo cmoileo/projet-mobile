@@ -1,24 +1,27 @@
-import {StyleSheet, Text, TouchableOpacity, View} from "react-native";
+import {ScrollView, StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import {InputTextComponent} from "../../components/InputText/InputText.component";
 import {Colors} from "../../components/Shared/Colors";
 import {ExercicePillComponent} from "../../components/ExercicePill/ExercicePill.component";
 
 export const AddNewTrainingLayout = () => {
+
     return (
        <View style={styles.container}>
            <InputTextComponent />
-           <View style={styles.wrapper}>
-               <TouchableOpacity style={styles.addButton}>
-                   <Text>+ Ajouter un exercice</Text>
-               </TouchableOpacity>
-               {
-                     [1, 2, 3].map((index: number) => {
-                          return (
-                              <ExercicePillComponent title={"Développé couché"} index={index} repetition_number={8} rest_time={"3min30"} />
-                          )
-                     })
-               }
-           </View>
+           <ScrollView>
+               <View style={styles.wrapper}>
+                   <TouchableOpacity style={styles.addButton}>
+                       <Text>+ Ajouter un exercice</Text>
+                   </TouchableOpacity>
+                   {
+                         [1, 2, 3].map((index: number) => {
+                              return (
+                                  <ExercicePillComponent title={"Développé couché"} index={index} repetition_number={8} rest_time={"3min30"} />
+                              )
+                         })
+                   }
+               </View>
+           </ScrollView>
        </View>
     );
 }
