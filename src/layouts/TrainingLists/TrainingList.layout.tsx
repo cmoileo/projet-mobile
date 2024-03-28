@@ -1,36 +1,17 @@
-import { View, ScrollView, Text } from "react-native";
+import { View, ScrollView } from "react-native";
 import { TrainingPill } from "../../components/TrainingPill/TrainingPill.component";
 import { AddTrainingButtonComponent } from "../../components/AddTrainingButton/AddTrainingButton.component";
-import React, { useEffect, useState } from "react";
-import { UserContext } from "../../App";
-import readByUserId from "../../utils/db/entities/training/operations/read";
+import React, { useContext } from "react";
+import { TrainingContext } from "../../App";
 import { NavigationProp } from "@react-navigation/native";
 import firebase from "firebase/compat";
-import DocumentData = firebase.firestore.DocumentData;
 
 type Props = {
   navigation: NavigationProp<any>;
 };
 
 export const TrainingList: React.FC<Props> = ({ navigation }) => {
-  const [trainings, setTrainings] = useState<DocumentData>([]);
-
-  const userId = React.useContext(UserContext);
-
-  useEffect(() => {
-    const fetchTrainings = async () => {
-      try {
-        const trainingsDoc = await readByUserId(
-          "clzar7f3oq5s57m06uoxmc1wykkodhfyxl2rol2vq1dq71e80o" // TODO: change by userId
-        );
-        setTrainings(trainingsDoc);
-      } catch (error) {
-        console.log("Error fetching trainings", error);
-      }
-    };
-
-    fetchTrainings();
-  }, []);
+  const trainings = useContext(TrainingContext).trainings;
 
   return (
     <ScrollView>
@@ -47,9 +28,11 @@ export const TrainingList: React.FC<Props> = ({ navigation }) => {
         {trainings.map((training: any) => {
           return (
             <TrainingPill
+              id={training.id}
+              navigation={navigation}
               key={training.id}
               trainingName={training.name}
-              date={training.Date}
+              date={training.date}
               exercicesCount={training.exercises.length}
             />
           );

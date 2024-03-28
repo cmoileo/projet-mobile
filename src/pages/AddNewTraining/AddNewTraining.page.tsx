@@ -20,7 +20,7 @@ export const AddNewTraining: React.FC<Props> = ({navigation}) => {
             <View style={mainWrapper.MainWrapper}>
                 <AppTitleText />
                 <PageTitle label={"🗒Nouveau Training"} />
-                <AddNewTrainingLayout />
+                <AddNewTrainingLayout navigation={navigation}/>
             </View>
             <NavBar navigation={navigation} />
         </>

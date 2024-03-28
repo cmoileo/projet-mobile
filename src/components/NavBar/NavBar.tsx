@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
     paddingBottom: 30,
     paddingTop: 20,
     position: "absolute",
+    zIndex: 0,
     bottom: 0,
     width: "100%",
     paddingHorizontal: 50,

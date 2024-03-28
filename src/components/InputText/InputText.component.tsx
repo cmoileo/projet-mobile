@@ -1,13 +1,16 @@
 import {StyleSheet, TextInput, View} from "react-native";
 import {Colors} from "../Shared/Colors";
+import React, {SetStateAction} from "react";
+import {Dispatch} from "react";
 
-export const InputTextComponent = () => {
+export const InputTextComponent = ({setTrainingName}: {setTrainingName: Dispatch<SetStateAction<string>>}) => {
     return (
         <View>
             <TextInput
                 style={styles.input}
                 placeholder="TITRE"
                 placeholderTextColor="#3782FF"
+                onChangeText={text => setTrainingName(text)}
             />
         </View>
     );

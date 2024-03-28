@@ -6,6 +6,7 @@ import { UserContext } from "../../App";
 import { Exercise } from "../../types/training";
 import trainingOperations from "../../utils/db/entities/training";
 import trainingData from "../../../assets/datas/exercices.json";
+import { ExercicePillStats } from "../../components/ExercisePillStats/ExercisesPillStats";
 
 type Props = {
   navigation: NavigationProp<any>;
@@ -45,14 +46,13 @@ const ExerciceListLayout: React.FC<Props> = ({ navigation }) => {
       <View style={styles.wrapper}>
         {exercises.map((exercise: ExerciceWithName, index: number) => {
           return (
-            <ExercicePillComponent
+            <ExercicePillStats
               key={exercise.id}
               title={exercise.name}
               index={index}
-              repetition_number={exercise.made_number}
-              is_stats_pill
               id={exercise.id}
               navigation={navigation}
+              made_number={exercise.made_number}
             />
           );
         })}

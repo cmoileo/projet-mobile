@@ -12,7 +12,6 @@ export const Home: React.FC<Props> = ({ navigation }) => {
   return (
     <>
       <View style={styles.container}>
-        <Chart />
         <StatusBar style="auto" />
       </View>
       <NavBar navigation={navigation} />
