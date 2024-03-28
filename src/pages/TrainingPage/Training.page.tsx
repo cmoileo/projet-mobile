@@ -32,6 +32,7 @@ export const TrainingPage = ({navigation, route}: {navigation: NavigationProp<an
                 <AppTitleText />
                 <PageTitle label={pageTitle} />
                 {
+                    // @ts-ignore
                     training && <ExercicesListLayout exercices={training.exercises} trainingId={training.training_id} training={training} />
                 }
             </View>

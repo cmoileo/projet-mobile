@@ -4,8 +4,11 @@ import {SvgXml} from "react-native-svg";
 import RNPickerSelect from "react-native-picker-select";
 import {Colors} from "../Shared/Colors";
 import {buttonStyles} from "../Shared/ButtonStyle";
+import {ChronoComponent} from "../Chronometre/Chrono.component";
 
 export const AddPerf = ({
+    chronoValue,
+    setChronoValue,
     selectedWeight,
     setSelectedWeight,
     selectedDecimal,
@@ -16,6 +19,8 @@ export const AddPerf = ({
     selectedExerciceId,
     isModalVisible,
     setIsModalVisible}: {
+    chronoValue: number,
+    setChronoValue: Dispatch<SetStateAction<number>>,
     selectedRepetitions: number,
     setSelectedRepetitions: Dispatch<SetStateAction<number>>,
     selectedWeight: number,
@@ -23,6 +28,7 @@ export const AddPerf = ({
     selectedDecimal: number,
     setSelectedDecimal: Dispatch<SetStateAction<number>>,
     handleValidateExerciceData: (
+        chronoValue: any,
         index: number,
         selectedWeight: number,
         selectedDecimal: number,
@@ -75,6 +81,7 @@ export const AddPerf = ({
                         />
                         <Text>reps</Text>
                     </View>
+                    <ChronoComponent chronoValue={chronoValue} setChronoValue={setChronoValue} />
                     <TouchableOpacity style={styles.validateBtn} onPress={() => {
                         if (
                             selectedExerciceId === null
@@ -83,10 +90,11 @@ export const AddPerf = ({
                             || selectedRepetitions === null
                         ) return;
                         handleValidateExerciceData(
+                            chronoValue,
                             selectedExerciceId,
                             selectedWeight,
                             selectedDecimal,
-                            selectedRepetitions
+                            selectedRepetitions,
                         )
                         setIsModalVisible("none")
                     }}>
@@ -109,7 +117,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
         paddingTop: 20,
         width: Dimensions.get('window').width,
-        height: "30%",
+        height: "20%",
         backgroundColor: "white",
         elevation: (Platform.OS === 'android') ? 100 : 100,
     },
