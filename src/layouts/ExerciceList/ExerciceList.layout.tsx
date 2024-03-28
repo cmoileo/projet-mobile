@@ -27,8 +27,8 @@ const ExerciceListLayout: React.FC<Props> = ({ navigation }) => {
           parsedExercises.push({
             ...exercise,
             name:
-              trainingData.find((ex) => ex.id === Number(exercise.id))?.name ||
-              "",
+              trainingData.find((ex) => ex.id === Number(exercise.id) + 1)
+                ?.name || "",
             made_number: exercise.perf.length,
           });
         } else {
