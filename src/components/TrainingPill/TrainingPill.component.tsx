@@ -22,7 +22,7 @@ export const TrainingPill: React.FC<Props> = ({id, trainingName, date, exercices
                 trainingId: id
             })
         }} style={styles.container}>
-            <Text style={mainText.Main}>{trainingName} !!!!!!!</Text>
+            <Text style={mainText.Main}>{trainingName}</Text>
             <View style={styles.wrapper}>
                 <Text style={mainText.Secondary}>{formatedDateToString}</Text>
                 <Text style={mainText.Secondary}>-</Text>
