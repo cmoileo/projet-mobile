@@ -6,7 +6,9 @@ const readOneByUserId = async (trainingId: string) => {
         const trainingRef = doc(db, "trainings", trainingId)
         const trainingDocs = await getDoc(trainingRef);
         if (!trainingDocs) return [];;
-        return trainingDocs.data();
+        return {
+            training_id: trainingId, ...trainingDocs.data()
+        };
     } catch (error) {
         throw error;
     }

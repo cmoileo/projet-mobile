@@ -32,7 +32,7 @@ export const AddPerf = ({handleValidateExerciceData, selectedExerciceId, isModal
                     <View style={styles.pickersContainer}>
                         <RNPickerSelect
                             style={styles.pickerStyle}
-                            placeholder={{ label: "0", value: null }}
+                            placeholder={{ label: selectedWeight, value: null }}
                             onValueChange={(value) => setSelectedWeight(parseInt(value))}
                             items={numberArray1.map(number => ({ label: number.toString(), value: number.toString() }))}
                         />
@@ -43,15 +43,16 @@ export const AddPerf = ({handleValidateExerciceData, selectedExerciceId, isModal
                         }}>.</Text>
                         <RNPickerSelect
                             style={styles.pickerStyle}
-                            placeholder={{ label: "0", value: null }}
+                            placeholder={{ label: selectedDecimal, value: null }}
                             onValueChange={(value) => setSelectedDecimal(parseInt(value))}
                             items={numberArray2.map(number => ({ label: number.toString(), value: number.toString() }))}
                         />
+                        <Text>kg</Text>
                     </View>
                     <View style={styles.pickersContainer}>
                         <RNPickerSelect
                             style={styles.pickerStyle}
-                            placeholder={{ label: "0", value: null }}
+                            placeholder={{ label: selectedRepetitions, value: null }}
                             onValueChange={(value) => setSelectedRepetitions(parseInt(value))}
                             items={numberArray3.map(number => ({ label: number.toString(), value: number.toString() }))}
                         />
@@ -80,12 +81,12 @@ export const AddPerf = ({handleValidateExerciceData, selectedExerciceId, isModal
 const styles = StyleSheet.create({
     modalContainer: {
         position: "absolute",
-        bottom: 90,
+        bottom: Dimensions.get('window').height / 3,
         zIndex: 999999,
         paddingHorizontal: 20,
         paddingTop: 20,
         width: Dimensions.get('window').width,
-        height: "60%",
+        height: "30%",
         backgroundColor: "white",
         elevation: (Platform.OS === 'android') ? 100 : 100,
     },
@@ -98,6 +99,7 @@ const styles = StyleSheet.create({
     pickersContainer : {
         display: "flex",
         flexDirection: "row",
+        alignItems: "flex-end",
         gap: 10,
         marginTop: 20,
     },

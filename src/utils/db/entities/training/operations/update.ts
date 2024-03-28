@@ -4,9 +4,12 @@ import { UpdateTrainingDto } from "../../../dto/training/UpdateTrainingDto";
 
 const update = async (id: string, data: Partial<UpdateTrainingDto>) => {
   try {
+    console.log("==================================== UPDATE BY ID ===================================", id, data, "===================================");
     const docRef = doc(db, "trainings", id);
+    console.log("=============", docRef, "=============");
     await updateDoc(docRef, data);
     const updatedDoc = await getDoc(docRef);
+    console.log("====================================", updatedDoc, "===================================");
     if (!updatedDoc.exists()) throw new Error("Document does not exist");
     return updatedDoc.data();
   } catch (error) {

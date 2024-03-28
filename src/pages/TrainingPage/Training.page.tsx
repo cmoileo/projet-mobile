@@ -21,6 +21,7 @@ export const TrainingPage = ({navigation, route}: {navigation: NavigationProp<an
         const getSingleTraining = async () => {
             if (!userId) return;
             const trainingByName: any = await readOneByUserId(trainingId);
+            console.log(trainingByName);
             setPageTitle(`🗒${trainingByName.name}`)
             setTraining(trainingByName);
         }
@@ -33,7 +34,7 @@ export const TrainingPage = ({navigation, route}: {navigation: NavigationProp<an
                 <AppTitleText />
                 <PageTitle label={pageTitle} />
                 {
-                    training && <ExercicesListLayout exercices={training.exercises} trainingId={trainingId} />
+                    training && <ExercicesListLayout exercices={training.exercises} trainingId={training.training_id} training={training} />
                 }
             </View>
             <NavBar navigation={navigation} />

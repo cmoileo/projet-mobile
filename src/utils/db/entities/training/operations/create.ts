@@ -14,7 +14,8 @@ const create = async (data: CreateTrainingDto) => {
               date: exercise.date,
               repetions: exercise.repetions,
               weight: exercise.weight,
-              breakTime: exercise.breakTime
+              breakTime: exercise.breakTime,
+              perf: [],
             }
             return createdExercise;
           }
