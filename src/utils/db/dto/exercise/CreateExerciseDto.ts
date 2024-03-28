@@ -1,20 +1,20 @@
 export class CreateExerciseDto {
   constructor(
-    name: string,
+    id: number,
     date: Date,
-    repetions: number,
+    repetions?: number,
     weight?: number,
     breakTime?: number
   ) {
-    this.name = name
+    this.id = id;
     this.date = date;
-    this.repetions = repetions;
+    this.repetions = repetions || 0;
     this.weight = weight || 0;
     this.breakTime = breakTime || 0;
   }
-    name: string;
+  id: number;
   date: Date;
-  repetions: number;
+  repetions: number
   weight: number;
   breakTime: number;
 }
