@@ -24,13 +24,15 @@ const ExerciceListLayout: React.FC<Props> = ({ navigation }) => {
       const exercises = data.map((training) => training.exercises).flat();
       for (const exercise of exercises) {
         if (!parsedExercises.find((ex) => ex.id === exercise.id)) {
-          parsedExercises.push({
-            ...exercise,
-            name:
-              trainingData.find((ex) => ex.id === Number(exercise.id) + 1)
-                ?.name || "",
-            made_number: exercise.perf.length,
-          });
+          if (exercise.perf.length > 0) {
+            parsedExercises.push({
+              ...exercise,
+              name:
+                trainingData.find((ex) => ex.id === Number(exercise.id) + 1)
+                  ?.name || "",
+              made_number: exercise.perf.length,
+            });
+          }
         } else {
           const index = parsedExercises.findIndex(
             (ex) => ex.id === exercise.id
