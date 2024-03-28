@@ -4,10 +4,10 @@ import React, { useEffect } from "react";
 import storage from "./AsyncStorage/AsyncStorage.util";
 import { customAlphabet } from "nanoid/non-secure";
 
-export const UserContext = React.createContext<string>("");
+export const UserContext = React.createContext<string | null>(null);
 
 export default function App() {
-  const [userId, setUserId] = React.useState<string>("");
+  const [userId, setUserId] = React.useState<string | null>(null);
 
   useEffect(() => {
     const fetchUserId = async () => {
