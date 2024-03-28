@@ -17,7 +17,7 @@ export const NavBar: React.FC<Props> = ({ navigation }) => {
 
       <TouchableOpacity
         style={styles.homeButton}
-        onPress={() => navigation.navigate("Home")}
+        onPress={() => navigation.navigate("MainHome")}
       >
         <SvgXml xml={xml_home} width="40" height="40" />
       </TouchableOpacity>

@@ -6,6 +6,7 @@ import { AddNewTraining } from "../pages/AddNewTraining/AddNewTraining.page";
 import ExerciceStatsList from "../pages/ExerciceStatsList/ExerciceStatsList.page";
 import ExerciceStats from "../pages/ExerciceStats/ExerciceStats.page";
 import { TrainingPage } from "../pages/TrainingPage/Training.page";
+import OnBoarding from "../pages/OnBoarding/OnBoarding.page";
 
 const Stack = createNativeStackNavigator();
 
@@ -13,7 +14,8 @@ const MyStack = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomePage} />
+        <Stack.Screen name="Home" component={OnBoarding} />
+        <Stack.Screen name="MainHome" component={HomePage} />
         <Stack.Screen name="AddNewTraining" component={AddNewTraining} />
         <Stack.Screen
           name="Training"
