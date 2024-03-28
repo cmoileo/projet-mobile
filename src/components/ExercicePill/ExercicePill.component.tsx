@@ -53,6 +53,7 @@ const styles = StyleSheet.create({
     width: "100%",
     display: "flex",
     flexDirection: "row",
+    marginTop: 20,
     justifyContent: "space-between",
     padding: 15,
     alignItems: "center",

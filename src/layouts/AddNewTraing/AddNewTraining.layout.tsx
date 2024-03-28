@@ -46,43 +46,43 @@ export const AddNewTrainingLayout = ({
     <>
       <View style={styles.container}>
         <InputTextComponent setTrainingName={setTrainingName} />
-        <ScrollView>
-          <View style={styles.wrapper}>
-            <TouchableOpacity
-              onPress={() => setIsModalVisible("flex")}
-              style={styles.addButton}
-            >
-              <Text>+ Ajouter un exercice</Text>
-            </TouchableOpacity>
-            {chosenExercices &&
-              chosenExercices.map((exercice, index) => {
-                return (
-                  <ExercicePillComponent
-                    key={index}
-                    title={
-                      ExercicesData[
-                        ExercicesData.findIndex((ex) => ex.id == exercice.id) +
-                          1
-                      ].name
-                    }
-                    index={index}
-                    chosenExercices={chosenExercices}
-                    setChosenExercices={setChosenExercices}
-                  />
-                );
-              })}
-          </View>
-        </ScrollView>
         <TouchableOpacity
-          style={styles.createButton}
-          onPress={handleCreateExercice}
+            onPress={() => setIsModalVisible("flex")}
+            style={styles.addButton}
+        >
+          <Text>+ Ajouter un exercice</Text>
+        </TouchableOpacity>
+        <View style={styles.wrapper}>
+          <ScrollView>
+              {chosenExercices &&
+                chosenExercices.map((exercice, index) => {
+                  return (
+                    <ExercicePillComponent
+                      key={index}
+                      title={
+                        ExercicesData[
+                          ExercicesData.findIndex((ex) => ex.id == exercice.id) +
+                            1
+                        ].name
+                      }
+                      index={index}
+                      chosenExercices={chosenExercices}
+                      setChosenExercices={setChosenExercices}
+                    />
+                  );
+                })}
+          </ScrollView>
+        </View>
+        <TouchableOpacity
+            style={styles.createButton}
+            onPress={handleCreateExercice}
         >
           <Text
-            style={{
-              color: Colors["text-primary-color"],
-              fontSize: 18,
-              fontWeight: "bold",
-            }}
+              style={{
+                color: Colors["text-primary-color"],
+                fontSize: 18,
+                fontWeight: "bold",
+              }}
           >
             CRÉER
           </Text>
@@ -109,6 +109,8 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "column",
     gap: 15,
+    overflow: "scroll",
+    height: 250,
   },
   addButton: {
     width: "100%",
