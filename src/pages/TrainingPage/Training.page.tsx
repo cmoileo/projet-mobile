@@ -8,9 +8,12 @@ import {NavigationProp, RouteProp} from "@react-navigation/native";
 import readOneByUserId from "../../utils/db/entities/training/operations/readOne";
 import React, {useEffect, useState} from "react";
 import {UserContext} from "../../App";
+import {ExercicesListLayout} from "../../layouts/ExercicesList/ExercicesList.layout";
+import {CreateTrainingDto} from "../../utils/db/dto/training/CreateTrainingDto";
 
 export const TrainingPage = ({navigation, route}: {navigation: NavigationProp<any>, route: RouteProp<any>}) => {
-    const [training, setTraining] = useState({});
+    const [training, setTraining] = useState<CreateTrainingDto | null>(null);
+    const [pageTitle, setPageTitle] = useState("🗒Training");
     const trainingId = route.params?.trainingId;
     const userId = React.useContext(UserContext);
 
@@ -18,6 +21,7 @@ export const TrainingPage = ({navigation, route}: {navigation: NavigationProp<an
         const getSingleTraining = async () => {
             if (!userId) return;
             const trainingByName: any = await readOneByUserId(trainingId);
+            setPageTitle(`🗒${trainingByName.name}`)
             setTraining(trainingByName);
         }
         getSingleTraining();
@@ -27,8 +31,10 @@ export const TrainingPage = ({navigation, route}: {navigation: NavigationProp<an
         <>
             <View style={mainWrapper.MainWrapper}>
                 <AppTitleText />
-                <PageTitle label={"🗒Training"} />
-                <Text>{trainingId}</Text>
+                <PageTitle label={pageTitle} />
+                {
+                    training && <ExercicesListLayout exercices={training.exercises} />
+                }
             </View>
             <NavBar navigation={navigation} />
         </>

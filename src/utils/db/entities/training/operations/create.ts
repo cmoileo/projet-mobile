@@ -1,6 +1,7 @@
 import {collection, doc, setDoc, addDoc} from "firebase/firestore";
 import db from "../../../config/firebase";
 import { CreateTrainingDto } from "../../../dto/training/CreateTrainingDto";
+import ExercicesData from "../../../../../../assets/datas/exercices.json";
 
 const create = async (data: CreateTrainingDto) => {
   try {
@@ -9,7 +10,7 @@ const create = async (data: CreateTrainingDto) => {
       exercises: data.exercises.map(
           (exercise) => {
             const createdExercise = {
-              name: exercise.name,
+              id: exercise.id,
               date: exercise.date,
               repetions: exercise.repetions,
               weight: exercise.weight,

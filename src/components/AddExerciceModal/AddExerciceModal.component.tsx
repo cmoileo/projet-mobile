@@ -25,11 +25,11 @@ export const AddExerciceModalComponent = ({isModalVisible, setIsModalVisible, ch
     const handleExercicePress = (index: number): void => {
         setIsModalVisible("none");
         if (chosenExercices === null) {
-            const newExercice = new CreateExerciseDto(Exercices[index].name, new Date());
+            const newExercice = new CreateExerciseDto(index, new Date());
             setChosenExercices([newExercice]);
             return;
         }
-        const newExercice = new CreateExerciseDto(Exercices[index].name, new Date());
+        const newExercice = new CreateExerciseDto(index, new Date());
         setChosenExercices([...chosenExercices, newExercice]);
     }
 

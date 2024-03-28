@@ -9,6 +9,7 @@ import {TrainingContext, UserContext} from "../../App";
 import readByUserId from "../../utils/db/entities/training/operations/read";
 import {NavigationProp} from "@react-navigation/native";
 import {CreateExerciseDto} from "../../utils/db/dto/exercise/CreateExerciseDto";
+import ExercicesData from "../../../assets/datas/exercices.json"
 
 export const AddNewTrainingLayout = ({navigation}: {navigation: NavigationProp<any>}) => {
     const setTrainings = useContext(TrainingContext).setTrainings;
@@ -42,7 +43,7 @@ export const AddNewTrainingLayout = ({navigation}: {navigation: NavigationProp<a
                         {
                            chosenExercices && chosenExercices.map((exercice, index) => {
                                 return (
-                                    <ExercicePillComponent key={index} title={exercice.name} index={index} chosenExercices={chosenExercices} setChosenExercices={setChosenExercices} />
+                                    <ExercicePillComponent key={index} title={ExercicesData[index].name} index={index} chosenExercices={chosenExercices} setChosenExercices={setChosenExercices} />
                                 )
                         })}
                     </View>
