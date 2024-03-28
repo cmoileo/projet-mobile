@@ -1,4 +1,4 @@
-import { StyleSheet, View } from "react-native";
+import { ScrollView, StyleSheet, View } from "react-native";
 import { NavigationProp } from "@react-navigation/native";
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../App";
@@ -42,7 +42,7 @@ const ExerciceListLayout: React.FC<Props> = ({ navigation }) => {
     })();
   }, [userId]);
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <View style={styles.wrapper}>
         {exercises.map((exercise: ExerciceWithName, index: number) => {
           return (
@@ -57,7 +57,7 @@ const ExerciceListLayout: React.FC<Props> = ({ navigation }) => {
           );
         })}
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
