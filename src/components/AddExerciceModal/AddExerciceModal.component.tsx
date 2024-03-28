@@ -65,7 +65,7 @@ export const AddExerciceModalComponent = ({isModalVisible, setIsModalVisible, ch
 const styles = StyleSheet.create({
     modalContainer: {
         position: "absolute",
-        bottom: 90,
+        bottom: Dimensions.get('window').height / 2,
         zIndex: 999999,
         paddingHorizontal: 20,
         paddingTop: 20,
