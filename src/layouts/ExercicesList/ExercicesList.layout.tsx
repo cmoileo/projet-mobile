@@ -11,9 +11,18 @@ export const ExercicesListLayout = ({exercices, trainingId, training}: {exercice
     const [isModalVisible, setIsModalVisible] = useState<"none" | "flex">("none");
     const [selectedExerciceId, setSelectedExerciceId] = useState<number | null>(null);
 
+    const [selectedWeight, setSelectedWeight] = useState<number | null>(0);
+    const [selectedDecimal, setSelectedDecimal] = useState<number | null>(0);
+    const [selectedRepetitions, setSelectedRepetitions] = useState<number | null>(0);
+
     const handleClickExercice = (index: number) => {
         setIsModalVisible("flex")
         setSelectedExerciceId(index)
+        // if (exercices[index].perf) {
+        //     setSelectedWeight(exercices[index].perf[0].weight)
+        //     setSelectedDecimal(exercices[index].perf[0].decimal)
+        //     setSelectedRepetitions(exercices[index].perf[0].repetitions)
+        // }
     }
 
     const handleValidateExerciceData = async (
@@ -22,30 +31,26 @@ export const ExercicesListLayout = ({exercices, trainingId, training}: {exercice
         selectedDecimal: number,
         selectedRepetitions: number
         ) => {
-        console.log("=======================================================================")
-        console.log("=======================================================================")
-        console.log(index, exercices[index].perf)
-        console.log("=======================================================================")
-        console.log("=======================================================================")
         let newExercices = exercices
         if (newExercices[index].perf) {
             newExercices[index].perf.push({
                 weight: selectedWeight,
                 decimal: selectedDecimal,
-                repetitions: selectedRepetitions
+                repetitions: selectedRepetitions,
+                date: new Date()
             });
         } else {
             newExercices[index].perf = [{
                 weight: selectedWeight,
                 decimal: selectedDecimal,
-                repetitions: selectedRepetitions
+                repetitions: selectedRepetitions,
+                date: new Date()
             }]
         }
         const updatetedTraining = {
             ...training,
             exercises: newExercices
         }
-        console.log("==================================== trainingId ===================================", trainingId, "===================================");
         await update(trainingId, updatetedTraining);
     }
 
@@ -55,18 +60,39 @@ export const ExercicesListLayout = ({exercices, trainingId, training}: {exercice
                 <View style={styles.wrapper}>
                     {exercices.map((exercise: CreateExerciseDto, index: number) => {
                         return (
-                            <TouchableOpacity style={styles.container} onPress={() => handleClickExercice(index)}>
-                                <Text style={mainText.Main}>#{index + 1}</Text>
-                                <Text style={mainText.Secondary}>{new Date(exercise.date.seconds * 1000).toLocaleDateString('fr-FR')}</Text>
-                                <Text style={mainText.Secondary}>{ExercicesData[exercise.id].name}</Text>
-                                <Text style={mainText.Secondary}>{exercise.repetions}</Text>
-                                <Text style={mainText.Secondary}>{exercise.weight}kg</Text>
-                            </TouchableOpacity>
+                            <View style={
+                                index == exercices.length - 1 ? {
+                                    paddingBottom: 100,
+                                } : {
+                                    paddingBottom: 0,
+                                }
+                            }>
+                                <TouchableOpacity onPress={() => handleClickExercice(index)} style={styles.container}>
+                                    <Text style={mainText.Main}>#{index + 1}</Text>
+                                    <Text style={mainText.Secondary}>{new Date(exercise.date.seconds * 1000).toLocaleDateString('fr-FR')}</Text>
+                                    <Text style={mainText.Secondary}>{ExercicesData[exercise.id].name}</Text>
+                                    <Text style={mainText.Secondary}>{exercise.repetions}</Text>
+                                    <Text style={mainText.Secondary}>{exercise.weight}kg</Text>
+                                </TouchableOpacity>
+                                <View style={styles.perfsContainer}>
+                                    {
+                                        exercise.perf &&
+                                        exercise.perf.map((perf: any) => {
+                                            return (
+                                                <View style={styles.perfContainer}>
+                                                    <Text>{perf.weight}kg</Text>
+                                                    <Text>{perf.repetitions}reps</Text>
+                                                </View>
+                                            )
+                                        })
+                                    }
+                                </View>
+                            </View>
                         );
                     })}
                 </View>
             </ScrollView>
-            <AddPerf handleValidateExerciceData={handleValidateExerciceData} selectedExerciceId={selectedExerciceId} isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible} />
+            <AddPerf selectedRepetitions={selectedRepetitions} setSelectedRepetitions={setSelectedRepetitions} selectedDecimal={selectedDecimal} selectedWeight={selectedWeight} setSelectedDecimal={setSelectedDecimal} setSelectedWeight={setSelectedWeight} handleValidateExerciceData={handleValidateExerciceData} selectedExerciceId={selectedExerciceId} isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible} />
         </>
     )
 }
@@ -90,5 +116,17 @@ const styles = StyleSheet.create({
         borderStyle: "solid",
         borderColor: Colors["primary-color"],
         borderWidth: 1
-    }
+    },
+    perfsContainer: {
+      display: "flex",
+      flexDirection: "column",
+      gap: 20,
+      marginLeft: 50,
+      marginTop: 20
+    },
+    perfContainer: {
+     display: "flex",
+     flexDirection: "row",
+     gap: 10
+  }
 })

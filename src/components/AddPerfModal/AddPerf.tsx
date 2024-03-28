@@ -4,7 +4,23 @@ import {SvgXml} from "react-native-svg";
 import RNPickerSelect from "react-native-picker-select";
 import {Colors} from "../Shared/Colors";
 
-export const AddPerf = ({handleValidateExerciceData, selectedExerciceId, isModalVisible, setIsModalVisible}: {
+export const AddPerf = ({
+    selectedWeight,
+    setSelectedWeight,
+    selectedDecimal,
+    setSelectedDecimal,
+    selectedRepetitions,
+    setSelectedRepetitions,
+    handleValidateExerciceData,
+    selectedExerciceId,
+    isModalVisible,
+    setIsModalVisible}: {
+    selectedRepetitions: number,
+    setSelectedRepetitions: Dispatch<SetStateAction<number>>,
+    selectedWeight: number,
+    setSelectedWeight: Dispatch<SetStateAction<number>>,
+    selectedDecimal: number,
+    setSelectedDecimal: Dispatch<SetStateAction<number>>,
     handleValidateExerciceData: (
         index: number,
         selectedWeight: number,
@@ -15,13 +31,10 @@ export const AddPerf = ({handleValidateExerciceData, selectedExerciceId, isModal
     setIsModalVisible: Dispatch<SetStateAction<"none" | "flex">>
     }) => {
 
-    const [selectedWeight, setSelectedWeight] = useState<number | null>(null);
-    const [selectedDecimal, setSelectedDecimal] = useState<number | null>(0);
-    const [selectedRepetitions, setSelectedRepetitions] = useState<number | null>(null);
-
     const numberArray1 = Array.from({ length: 401 }, (_, index) => index - 50);
     const numberArray2 = Array.from({ length: 10 }, (_, index) => index);
     const numberArray3 = Array.from({ length: 50 }, (_, index) => index + 1);
+
 
         return (
             <View style={[styles.modalContainer, {display: isModalVisible}]}>
@@ -32,7 +45,7 @@ export const AddPerf = ({handleValidateExerciceData, selectedExerciceId, isModal
                     <View style={styles.pickersContainer}>
                         <RNPickerSelect
                             style={styles.pickerStyle}
-                            placeholder={{ label: selectedWeight, value: null }}
+                            placeholder={{ label: selectedWeight.toString(), value: selectedWeight }}
                             onValueChange={(value) => setSelectedWeight(parseInt(value))}
                             items={numberArray1.map(number => ({ label: number.toString(), value: number.toString() }))}
                         />
@@ -43,7 +56,7 @@ export const AddPerf = ({handleValidateExerciceData, selectedExerciceId, isModal
                         }}>.</Text>
                         <RNPickerSelect
                             style={styles.pickerStyle}
-                            placeholder={{ label: selectedDecimal, value: null }}
+                            placeholder={{ label: selectedDecimal.toString(), value: selectedDecimal }}
                             onValueChange={(value) => setSelectedDecimal(parseInt(value))}
                             items={numberArray2.map(number => ({ label: number.toString(), value: number.toString() }))}
                         />
@@ -52,10 +65,11 @@ export const AddPerf = ({handleValidateExerciceData, selectedExerciceId, isModal
                     <View style={styles.pickersContainer}>
                         <RNPickerSelect
                             style={styles.pickerStyle}
-                            placeholder={{ label: selectedRepetitions, value: null }}
+                            placeholder={{ label: selectedRepetitions.toString(), value: selectedRepetitions }}
                             onValueChange={(value) => setSelectedRepetitions(parseInt(value))}
                             items={numberArray3.map(number => ({ label: number.toString(), value: number.toString() }))}
                         />
+                        <Text>reps</Text>
                     </View>
                     <TouchableOpacity onPress={() => {
                         if (
