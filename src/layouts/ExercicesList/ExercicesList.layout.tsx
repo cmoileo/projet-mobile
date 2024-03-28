@@ -11,9 +11,9 @@ export const ExercicesListLayout = ({exercices, trainingId, training}: {exercice
     const [isModalVisible, setIsModalVisible] = useState<"none" | "flex">("none");
     const [selectedExerciceId, setSelectedExerciceId] = useState<number | null>(null);
 
-    const [selectedWeight, setSelectedWeight] = useState<number | null>(0);
-    const [selectedDecimal, setSelectedDecimal] = useState<number | null>(0);
-    const [selectedRepetitions, setSelectedRepetitions] = useState<number | null>(0);
+    const [selectedWeight, setSelectedWeight] = useState<number>(0);
+    const [selectedDecimal, setSelectedDecimal] = useState<number>(0);
+    const [selectedRepetitions, setSelectedRepetitions] = useState<number>(0);
 
     const handleClickExercice = (index: number) => {
         setIsModalVisible("flex")
@@ -54,7 +54,7 @@ export const ExercicesListLayout = ({exercices, trainingId, training}: {exercice
         }
         await update(trainingId, updatetedTraining);
     }
-
+    console.log("===========================")
     return (
         <>
             <ScrollView>
@@ -78,16 +78,27 @@ export const ExercicesListLayout = ({exercices, trainingId, training}: {exercice
                                     {
                                         exercise.perf &&
                                         exercise.perf.map((perf: any, perfIndex: number) => {
-                                            const isShowDate = new Date(perf.date.seconds * 1000).toLocaleDateString('fr-FR') !== new Date(exercices[index].perf[perfIndex].date.seconds * 1000).toLocaleDateString('fr-FR')
-                                            console.log(isShowDate)
-                                            return (
+                                            let isShowDate = perfIndex == 0 ? true : new Date(perf.date.seconds * 1000).toLocaleDateString('fr-FR') !== new Date(exercices[index].perf[perfIndex - 1].date.seconds * 1000).toLocaleDateString('fr-FR')
+
+
+                                            return !isShowDate ? (
                                                 <View style={styles.perfContainer}>
-                                                    <Text>{isShowDate && new Date(perf.date.seconds * 1000).toLocaleDateString('fr-FR')}</Text>
                                                     <Text>{perf.weight}.{perf.decimal}kg</Text>
                                                     <Text>{perf.repetitions}reps</Text>
                                                 </View>
-                                            )
-                                        })
+                                            ) : (
+                                                <>
+                                                    <Text style={[mainText.Main, {
+                                                        marginBottom: 10,
+                                                    }]}>{new Date(perf.date.seconds * 1000).toLocaleDateString('fr-FR')}</Text>
+                                                    <View style={styles.perfContainer}>
+                                                    <Text>{perf.weight}.{perf.decimal}kg</Text>
+                                                    <Text>{perf.repetitions}reps</Text>
+                                                    </View>
+                                                </>
+                                                )
+                                            }
+                                        )
                                     }
                                 </View>
                             </View>
@@ -110,21 +121,21 @@ const styles = StyleSheet.create({
     container: {
       width: "100%",
       display: "flex",
-        flexDirection: "row",
-        justifyContent: "space-between",
-        alignItems: "center",
-        padding: 20,
-        backgroundColor: "white",
-        borderRadius: 10,
-        borderStyle: "solid",
-        borderColor: Colors["primary-color"],
-        borderWidth: 1
+      flexDirection: "row",
+      justifyContent: "space-between",
+      alignItems: "center",
+      padding: 20,
+      backgroundColor: "white",
+      borderRadius: 10,
+      borderStyle: "solid",
+      borderColor: Colors["primary-color"],
+      borderWidth: 1
     },
     perfsContainer: {
       display: "flex",
       flexDirection: "column",
       gap: 20,
-      marginLeft: 50,
+      marginLeft: 30,
       marginTop: 20
     },
     perfContainer: {
