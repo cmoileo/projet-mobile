@@ -39,18 +39,20 @@ const ExerciceStatsLayout: React.FC<Props> = ({ exerciceId }) => {
         })
         .flat();
       exercices.forEach((exercice: Exercise, index) => {
-        setDataWeight((prev) => [
-          ...prev,
-          { value: exercice.weight, label: String(index) },
-        ]);
-        setDataRepetition((prev) => [
-          ...prev,
-          { value: exercice.repetitions, label: String(index) },
-        ]);
-        setDataBreakTime((prev) => [
-          ...prev,
-          { value: exercice.breakTime, label: String(index) },
-        ]);
+        exercice.perf.forEach((perf) => {
+          setDataWeight((prev) => [
+            ...prev,
+            { value: perf.weight, label: String(index + 1) },
+          ]);
+          setDataRepetition((prev) => [
+            ...prev,
+            { value: perf.repetitions, label: String(index + 1) },
+          ]);
+          setDataBreakTime((prev) => [
+            ...prev,
+            { value: perf.breakTime, label: String(index + 1) },
+          ]);
+        });
         setTitleExercice(
           exercisesData.find((ex) => ex.id === Number(exerciceId))!.name
         );
@@ -64,7 +66,7 @@ const ExerciceStatsLayout: React.FC<Props> = ({ exerciceId }) => {
         <Text style={styles.title}>{titleExercice}</Text>
         <ChartWeight data={dataWeight} />
         <ChartRepetition data={dataRepetition} />
-        <ChartBreakTime data={dataBreakTime} />
+        {/* <ChartBreakTime data={dataBreakTime} /> */}
       </View>
     </ScrollView>
   );

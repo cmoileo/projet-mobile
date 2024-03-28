@@ -29,13 +29,13 @@ const ExerciceListLayout: React.FC<Props> = ({ navigation }) => {
             ...exercise,
             name: trainingData.find((ex) => ex.id === Number(exercise.id))!
               .name,
-            made_number: 1,
+            made_number: exercise.perf.length,
           });
         } else {
           const index = parsedExercises.findIndex(
             (ex) => ex.id === exercise.id
           );
-          parsedExercises[index].made_number += 1;
+          parsedExercises[index].made_number += exercise.perf.length;
         }
       });
       setExercises(parsedExercises);
