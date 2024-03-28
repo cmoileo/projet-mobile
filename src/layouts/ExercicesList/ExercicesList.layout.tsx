@@ -18,7 +18,7 @@ export const ExercicesListLayout = ({exercices, trainingId, training}: {exercice
     const handleClickExercice = (index: number) => {
         setIsModalVisible("flex")
         setSelectedExerciceId(index)
-        if (exercices[index].perf) {
+        if (exercices[index].perf.weight && exercices[index].perf.repetitions && exercices[index].perf.decimal) {
             setSelectedWeight(exercices[index].perf[exercices[index].perf.length - 1].weight)
             setSelectedDecimal(exercices[index].perf[exercices[index].perf.length - 1].decimal)
             setSelectedRepetitions(exercices[index].perf[exercices[index].perf.length - 1].repetitions)
@@ -69,10 +69,8 @@ export const ExercicesListLayout = ({exercices, trainingId, training}: {exercice
                                 }
                             }>
                                 <TouchableOpacity onPress={() => handleClickExercice(index)} style={styles.container}>
-                                    <Text style={mainText.Main}>#{index + 1}</Text>
-                                    <Text style={mainText.Secondary}>{ExercicesData[exercise.id].name}</Text>
-                                    <Text style={mainText.Secondary}>{exercise.repetions}</Text>
-                                    <Text style={mainText.Secondary}>{exercise.weight}kg</Text>
+                                    <Text style={mainText.Secondary}>#{index + 1}</Text>
+                                    <Text style={mainText.Main}>{ExercicesData[exercise.id].name}</Text>
                                 </TouchableOpacity>
                                 <View style={styles.perfsContainer}>
                                     {
@@ -80,6 +78,7 @@ export const ExercicesListLayout = ({exercices, trainingId, training}: {exercice
                                         exercise.perf.map((perf: any, perfIndex: number) => {
                                             let isShowDate = perfIndex == 0 ? true : new Date(perf.date.seconds * 1000).toLocaleDateString('fr-FR') !== new Date(exercices[index].perf[perfIndex - 1].date.seconds * 1000).toLocaleDateString('fr-FR')
 
+                                            let isDate = perf.date.seconds ? true : false;
 
                                             return !isShowDate ? (
                                                 <View style={styles.perfContainer}>
@@ -90,7 +89,7 @@ export const ExercicesListLayout = ({exercices, trainingId, training}: {exercice
                                                 <>
                                                     <Text style={[mainText.Main, {
                                                         marginBottom: 10,
-                                                    }]}>{new Date(perf.date.seconds * 1000).toLocaleDateString('fr-FR')}</Text>
+                                                    }]}>{isDate ? new Date(perf.date.seconds * 1000).toLocaleDateString('fr-FR') : new Date().toLocaleDateString("fr-FR")}</Text>
                                                     <View style={styles.perfContainer}>
                                                     <Text>{perf.weight}.{perf.decimal}kg</Text>
                                                     <Text>{perf.repetitions}reps</Text>
@@ -122,7 +121,7 @@ const styles = StyleSheet.create({
       width: "100%",
       display: "flex",
       flexDirection: "row",
-      justifyContent: "space-between",
+      gap: 20,
       alignItems: "center",
       padding: 20,
       backgroundColor: "white",
