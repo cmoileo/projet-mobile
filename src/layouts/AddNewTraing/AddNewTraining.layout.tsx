@@ -40,7 +40,7 @@ export const AddNewTrainingLayout = ({
     });
     const trainingsDoc = await readByUserId(userId);
     setTrainings(trainingsDoc);
-    navigation.navigate("Home");
+    navigation.navigate("MainHome");
   };
   return (
     <>
