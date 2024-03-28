@@ -26,12 +26,10 @@ const ExerciceStatsLayout: React.FC<Props> = ({ exerciceId }) => {
   const context = React.useContext(UserContext);
   const userId = context;
   React.useEffect(() => {
-    // if (!userId) return;
+    if (!userId) return;
     if (!exercisesData) return;
     const fetchData = async () => {
-      const data = await trainingOperations.readByUserId(
-        "clzar7f3oq5s57m06uoxmc1wykkodhfyxl2rol2vq1dq71e80o"
-      ); // TODO: change by userId
+      const data = await trainingOperations.readByUserId(userId);
       const exercices = data
         .filter((training) =>
           training.exercises.find((ex: Exercise) => ex.id === exerciceId)
@@ -59,7 +57,7 @@ const ExerciceStatsLayout: React.FC<Props> = ({ exerciceId }) => {
       });
     };
     fetchData();
-  }, []); // TODO: add userId to dependencies
+  }, [userId]);
   return (
     <ScrollView style={styles.container}>
       <View style={styles.wrapper}>
