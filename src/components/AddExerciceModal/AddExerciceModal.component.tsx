@@ -34,18 +34,19 @@ export const AddExerciceModalComponent = ({isModalVisible, setIsModalVisible, ch
     }
 
     return (
-        <View style={[styles.modalContainer, {display: isModalVisible}]}>
-            <TouchableOpacity onPress={() => setIsModalVisible("none")} style={styles.firstWrapper}>
-                <SvgXml xml={xml} width="40" height="40" />
-            </TouchableOpacity>
-            <ScrollView>
-                <View style={styles.exercicesContainer}>
-                    {
-                        Exercices.map((exercice, index) => {
+        <>
+            <View style={[styles.modalContainer, {display: isModalVisible}]}>
+                <TouchableOpacity onPress={() => setIsModalVisible("none")} style={styles.firstWrapper}>
+                    <SvgXml xml={xml} width="40" height="40"/>
+                </TouchableOpacity>
+                <ScrollView>
+                    <View style={styles.exercicesContainer}>
+                        {Exercices.map((exercice, index) => {
                             return (
-                                <TouchableOpacity onPress={() => handleExercicePress(index)} key={index} style={[styles.addButton, {
-                                    marginBottom: index === Exercices.length - 1 ? 30 : 0
-                                }]}>
+                                <TouchableOpacity onPress={() => handleExercicePress(index)} key={index}
+                                                  style={[styles.addButton, {
+                                                      marginBottom: index === Exercices.length - 1 ? 30 : 0
+                                                  }]}>
                                     <Text style={{
                                         fontSize: 18,
                                         marginBottom: 10,
@@ -53,12 +54,14 @@ export const AddExerciceModalComponent = ({isModalVisible, setIsModalVisible, ch
                                     }}>{exercice.name}</Text>
                                     <Text>{exercice.targeted_muscles.join(" - ")}</Text>
                                 </TouchableOpacity>
-                            )
-                        })
-                    }
-                </View>
-            </ScrollView>
-        </View>
+                            );
+                        })}
+                    </View>
+                </ScrollView>
+            </View>
+            <View style={[styles.shadow, {display: isModalVisible}]}>
+            </View>
+        </>
     );
 }
 
@@ -92,6 +95,13 @@ const styles = StyleSheet.create({
         display: "flex",
         flexDirection: "column",
         gap: 10,
+    },
+    shadow: {
+        height: "100%",
+        width: Dimensions.get('window').width,
+        position: "absolute",
+        backgroundColor: "rgba(0, 0, 0, 0.5)",
+        zIndex: 99999,
     }
 })
 

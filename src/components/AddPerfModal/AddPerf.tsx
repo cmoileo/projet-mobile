@@ -44,19 +44,19 @@ export const AddPerf = ({
 
 
     return (
-            <View style={[styles.modalContainer, {display: isModalVisible}]}>
+        <><
+            View style={[styles.modalContainer, {display: isModalVisible}]}>
                 <TouchableOpacity onPress={() => setIsModalVisible("none")} style={styles.firstWrapper}>
-                    <SvgXml xml={xml} width="40" height="40" />
+                    <SvgXml xml={xml} width="40" height="40"/>
                 </TouchableOpacity>
                 <View style={styles.metricsContainer}>
                     <View style={styles.pickersContainer}>
                         <RNPickerSelect
                             // @ts-ignore
                             style={styles.pickerStyle}
-                            placeholder={{ label: selectedWeight.toString(), value: selectedWeight }}
+                            placeholder={{label: selectedWeight.toString(), value: selectedWeight}}
                             onValueChange={(value) => setSelectedWeight(parseInt(value))}
-                            items={numberArray1.map(number => ({ label: number.toString(), value: number.toString() }))}
-                        />
+                            items={numberArray1.map(number => ({label: number.toString(), value: number.toString()}))}/>
                         <Text style={{
                             color: Colors["primary-color"],
                             fontSize: 18,
@@ -65,60 +65,59 @@ export const AddPerf = ({
                         <RNPickerSelect
                             // @ts-ignore
                             style={styles.pickerStyle}
-                            placeholder={{ label: selectedDecimal.toString(), value: selectedDecimal }}
+                            placeholder={{label: selectedDecimal.toString(), value: selectedDecimal}}
                             onValueChange={(value) => setSelectedDecimal(parseInt(value))}
-                            items={numberArray2.map(number => ({ label: number.toString(), value: number.toString() }))}
-                        />
+                            items={numberArray2.map(number => ({label: number.toString(), value: number.toString()}))}/>
                         <Text>kg</Text>
                     </View>
                     <View style={styles.pickersContainer}>
                         <RNPickerSelect
                             // @ts-ignore
                             style={styles.pickerStyle}
-                            placeholder={{ label: selectedRepetitions.toString(), value: selectedRepetitions }}
+                            placeholder={{label: selectedRepetitions.toString(), value: selectedRepetitions}}
                             onValueChange={(value) => setSelectedRepetitions(parseInt(value))}
-                            items={numberArray3.map(number => ({ label: number.toString(), value: number.toString() }))}
-                        />
+                            items={numberArray3.map(number => ({label: number.toString(), value: number.toString()}))}/>
                         <Text>reps</Text>
                     </View>
-                    <ChronoComponent chronoValue={chronoValue} setChronoValue={setChronoValue} />
+                    <ChronoComponent chronoValue={chronoValue} setChronoValue={setChronoValue}/>
                     <TouchableOpacity style={styles.validateBtn} onPress={() => {
-                        if (
-                            selectedExerciceId === null
+                        if (selectedExerciceId === null
                             || selectedWeight === null
                             || selectedDecimal === null
-                            || selectedRepetitions === null
-                        ) return;
+                            || selectedRepetitions === null) return;
                         handleValidateExerciceData(
                             chronoValue,
                             selectedExerciceId,
                             selectedWeight,
                             selectedDecimal,
-                            selectedRepetitions,
-                        )
-                        setIsModalVisible("none")
+                            selectedRepetitions
+                        );
+                        setIsModalVisible("none");
                     }}>
-                            <Text style={{
-                                color: "white",
-                                fontSize: 18,
-                                fontWeight: "bold",
-                            }}>Valider</Text>
+                        <Text style={{
+                            color: "white",
+                            fontSize: 18,
+                            fontWeight: "bold",
+                        }}>Valider</Text>
                     </TouchableOpacity>
                 </View>
             </View>
+            <View style={[styles.shadow, {display: isModalVisible}]}>
+            </View>
+        </>
         )
     }
 
 const styles = StyleSheet.create({
     modalContainer: {
         position: "absolute",
-        bottom: Dimensions.get('window').height / 3,
+        bottom: 90,
         zIndex: 999999,
         paddingHorizontal: 20,
         paddingTop: 20,
         width: Dimensions.get('window').width,
-        height: "20%",
         backgroundColor: "white",
+        paddingBottom: 50,
         elevation: (Platform.OS === 'android') ? 100 : 100,
     },
     firstWrapper: {
@@ -165,6 +164,13 @@ const styles = StyleSheet.create({
         width: 150,
         borderRadius: 10,
         marginTop: 20,
+    },
+    shadow: {
+        height: "100%",
+        width: Dimensions.get('window').width,
+        position: "absolute",
+        backgroundColor: "rgba(0, 0, 0, 0.5)",
+        zIndex: 99999,
     }
 })
 
