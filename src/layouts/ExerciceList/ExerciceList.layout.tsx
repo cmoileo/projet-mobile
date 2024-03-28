@@ -1,5 +1,4 @@
 import { StyleSheet, View } from "react-native";
-import { ExercicePillComponent } from "../../components/ExercicePill/ExercicePill.component";
 import { NavigationProp } from "@react-navigation/native";
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../App";
@@ -23,21 +22,22 @@ const ExerciceListLayout: React.FC<Props> = ({ navigation }) => {
       let parsedExercises: ExerciceWithName[] = [];
       const data = await trainingOperations.readByUserId(userId);
       const exercises = data.map((training) => training.exercises).flat();
-      exercises.forEach((exercise: Exercise) => {
+      for (const exercise of exercises) {
         if (!parsedExercises.find((ex) => ex.id === exercise.id)) {
           parsedExercises.push({
             ...exercise,
-            name: trainingData.find((ex) => ex.id === Number(exercise.id))!
-              .name,
-            made_number: 1,
+            name:
+              trainingData.find((ex) => ex.id === Number(exercise.id))?.name ||
+              "",
+            made_number: exercise.perf.length,
           });
         } else {
           const index = parsedExercises.findIndex(
             (ex) => ex.id === exercise.id
           );
-          parsedExercises[index].made_number += 1;
+          parsedExercises[index].made_number += exercise.perf.length;
         }
-      });
+      }
       setExercises(parsedExercises);
     })();
   }, [userId]);
