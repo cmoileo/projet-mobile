@@ -21,7 +21,6 @@ export const TrainingPage = ({navigation, route}: {navigation: NavigationProp<an
         const getSingleTraining = async () => {
             if (!userId) return;
             const trainingByName: any = await readOneByUserId(trainingId);
-            console.log(trainingByName);
             setPageTitle(`🗒${trainingByName.name}`)
             setTraining(trainingByName);
         }

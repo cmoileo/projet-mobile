@@ -3,6 +3,7 @@ import {Dispatch, SetStateAction, useState} from "react";
 import {SvgXml} from "react-native-svg";
 import RNPickerSelect from "react-native-picker-select";
 import {Colors} from "../Shared/Colors";
+import {buttonStyles} from "../Shared/ButtonStyle";
 
 export const AddPerf = ({
     selectedWeight,
@@ -71,7 +72,7 @@ export const AddPerf = ({
                         />
                         <Text>reps</Text>
                     </View>
-                    <TouchableOpacity onPress={() => {
+                    <TouchableOpacity style={styles.validateBtn} onPress={() => {
                         if (
                             selectedExerciceId === null
                             || selectedWeight === null
@@ -84,8 +85,13 @@ export const AddPerf = ({
                             selectedDecimal,
                             selectedRepetitions
                         )
+                        setIsModalVisible("none")
                     }}>
-                        <Text>Valider</Text>
+                            <Text style={{
+                                color: "white",
+                                fontSize: 18,
+                                fontWeight: "bold",
+                            }}>Valider</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -140,6 +146,13 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         width: "100%",
+    },
+    validateBtn: {
+        ...buttonStyles.button,
+        backgroundColor: Colors["primary-color"],
+        width: 150,
+        borderRadius: 10,
+        marginTop: 20,
     }
 })
 
