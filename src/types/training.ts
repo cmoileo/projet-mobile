@@ -1,7 +1,7 @@
 export type Exercise = {
   id: string;
   date: Date;
-  repetions: number;
+  repetitions: number;
   weight: number;
   breakTime: number;
 };

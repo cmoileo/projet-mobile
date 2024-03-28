@@ -1,11 +1,11 @@
 import create from "./operations/create";
-import read from "./operations/read";
+import readByUserId from "./operations/readByUserId";
 import update from "./operations/update";
 import remove from "./operations/remove";
 
 const trainingOperations = {
   create,
-  read,
+  readByUserId,
   update,
   delete: remove,
 };
