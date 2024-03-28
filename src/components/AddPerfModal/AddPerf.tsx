@@ -1,38 +1,77 @@
 import {Dimensions, Platform, StyleSheet, Text, TouchableOpacity, View} from "react-native";
-import {Dispatch, SetStateAction} from "react";
+import {Dispatch, SetStateAction, useState} from "react";
 import {SvgXml} from "react-native-svg";
 import RNPickerSelect from "react-native-picker-select";
 import {Colors} from "../Shared/Colors";
 
-export const AddPerf = ({isModalVisible, setIsModalVisible}: {
+export const AddPerf = ({handleValidateExerciceData, selectedExerciceId, isModalVisible, setIsModalVisible}: {
+    handleValidateExerciceData: (
+        index: number,
+        selectedWeight: number,
+        selectedDecimal: number,
+        selectedRepetitions: number) => void,
+    selectedExerciceId: number | null,
     isModalVisible: "flex" | "none",
     setIsModalVisible: Dispatch<SetStateAction<"none" | "flex">>
     }) => {
+
+    const [selectedWeight, setSelectedWeight] = useState<number | null>(null);
+    const [selectedDecimal, setSelectedDecimal] = useState<number | null>(0);
+    const [selectedRepetitions, setSelectedRepetitions] = useState<number | null>(null);
+
     const numberArray1 = Array.from({ length: 401 }, (_, index) => index - 50);
     const numberArray2 = Array.from({ length: 10 }, (_, index) => index);
+    const numberArray3 = Array.from({ length: 50 }, (_, index) => index + 1);
+
         return (
             <View style={[styles.modalContainer, {display: isModalVisible}]}>
                 <TouchableOpacity onPress={() => setIsModalVisible("none")} style={styles.firstWrapper}>
                     <SvgXml xml={xml} width="40" height="40" />
                 </TouchableOpacity>
-                <View style={styles.pickersContainer}>
-                    <RNPickerSelect
-                        style={styles.pickerStyle}
-                        placeholder={{ label: "0", value: null }}
-                        onValueChange={(value) => console.log(value)}
-                        items={numberArray1.map(number => ({ label: number.toString(), value: number.toString() }))}
-                    />
-                    <Text style={{
-                        color: Colors["primary-color"],
-                        fontSize: 18,
-                        fontWeight: "bold",
-                    }}>.</Text>
-                    <RNPickerSelect
-                        style={styles.pickerStyle}
-                        placeholder={{ label: "0", value: null }}
-                        onValueChange={(value) => console.log(value)}
-                        items={numberArray2.map(number => ({ label: number.toString(), value: number.toString() }))}
-                    />
+                <View style={styles.metricsContainer}>
+                    <View style={styles.pickersContainer}>
+                        <RNPickerSelect
+                            style={styles.pickerStyle}
+                            placeholder={{ label: "0", value: null }}
+                            onValueChange={(value) => setSelectedWeight(parseInt(value))}
+                            items={numberArray1.map(number => ({ label: number.toString(), value: number.toString() }))}
+                        />
+                        <Text style={{
+                            color: Colors["primary-color"],
+                            fontSize: 18,
+                            fontWeight: "bold",
+                        }}>.</Text>
+                        <RNPickerSelect
+                            style={styles.pickerStyle}
+                            placeholder={{ label: "0", value: null }}
+                            onValueChange={(value) => setSelectedDecimal(parseInt(value))}
+                            items={numberArray2.map(number => ({ label: number.toString(), value: number.toString() }))}
+                        />
+                    </View>
+                    <View style={styles.pickersContainer}>
+                        <RNPickerSelect
+                            style={styles.pickerStyle}
+                            placeholder={{ label: "0", value: null }}
+                            onValueChange={(value) => setSelectedRepetitions(parseInt(value))}
+                            items={numberArray3.map(number => ({ label: number.toString(), value: number.toString() }))}
+                        />
+                    </View>
+                    <TouchableOpacity onPress={() => {
+                        if (
+                            selectedExerciceId === null
+                            || selectedWeight === null
+                            || selectedDecimal === null
+                            || selectedRepetitions === null
+                        ) return;
+                        handleValidateExerciceData(
+                            selectedExerciceId,
+                            selectedWeight,
+                            selectedDecimal,
+                            selectedRepetitions
+                        )
+                    }}>
+                        <Text>Valider</Text>
+                    </TouchableOpacity>
                 </View>
             </View>
         )
@@ -60,7 +99,6 @@ const styles = StyleSheet.create({
         display: "flex",
         flexDirection: "row",
         gap: 10,
-        width: "100%",
         marginTop: 20,
     },
     pickerStyle: {
@@ -78,7 +116,14 @@ const styles = StyleSheet.create({
             color: Colors["primary-color"],
             fontSize: 18,
             fontWeight: "bold",
-        }
+        },
+    },
+    metricsContainer: {
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        width: "100%",
     }
 })
 

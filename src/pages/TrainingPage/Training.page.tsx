@@ -33,7 +33,7 @@ export const TrainingPage = ({navigation, route}: {navigation: NavigationProp<an
                 <AppTitleText />
                 <PageTitle label={pageTitle} />
                 {
-                    training && <ExercicesListLayout exercices={training.exercises} />
+                    training && <ExercicesListLayout exercices={training.exercises} trainingId={trainingId} />
                 }
             </View>
             <NavBar navigation={navigation} />
