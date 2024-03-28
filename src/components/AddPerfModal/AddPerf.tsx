@@ -1,5 +1,5 @@
 import {Dimensions, Platform, StyleSheet, Text, TouchableOpacity, View} from "react-native";
-import {Dispatch, SetStateAction, useState} from "react";
+import {Dispatch, SetStateAction} from "react";
 import {SvgXml} from "react-native-svg";
 import RNPickerSelect from "react-native-picker-select";
 import {Colors} from "../Shared/Colors";
@@ -37,7 +37,7 @@ export const AddPerf = ({
     const numberArray3 = Array.from({ length: 50 }, (_, index) => index + 1);
 
 
-        return (
+    return (
             <View style={[styles.modalContainer, {display: isModalVisible}]}>
                 <TouchableOpacity onPress={() => setIsModalVisible("none")} style={styles.firstWrapper}>
                     <SvgXml xml={xml} width="40" height="40" />
@@ -45,6 +45,7 @@ export const AddPerf = ({
                 <View style={styles.metricsContainer}>
                     <View style={styles.pickersContainer}>
                         <RNPickerSelect
+                            // @ts-ignore
                             style={styles.pickerStyle}
                             placeholder={{ label: selectedWeight.toString(), value: selectedWeight }}
                             onValueChange={(value) => setSelectedWeight(parseInt(value))}
@@ -56,6 +57,7 @@ export const AddPerf = ({
                             fontWeight: "bold",
                         }}>.</Text>
                         <RNPickerSelect
+                            // @ts-ignore
                             style={styles.pickerStyle}
                             placeholder={{ label: selectedDecimal.toString(), value: selectedDecimal }}
                             onValueChange={(value) => setSelectedDecimal(parseInt(value))}
@@ -65,6 +67,7 @@ export const AddPerf = ({
                     </View>
                     <View style={styles.pickersContainer}>
                         <RNPickerSelect
+                            // @ts-ignore
                             style={styles.pickerStyle}
                             placeholder={{ label: selectedRepetitions.toString(), value: selectedRepetitions }}
                             onValueChange={(value) => setSelectedRepetitions(parseInt(value))}
@@ -124,6 +127,7 @@ const styles = StyleSheet.create({
         marginTop: 20,
     },
     pickerStyle: {
+        // @ts-ignore
         placeholder: {
             color: Colors["primary-color"],
             fontSize: 18,

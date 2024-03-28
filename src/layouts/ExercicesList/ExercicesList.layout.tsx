@@ -88,7 +88,7 @@ export const ExercicesListLayout = ({exercices, trainingId, training}: {exercice
                                             ) : (
                                                 <>
                                                     <Text style={[mainText.Main, {
-                                                        marginBottom: 10,
+                                                        marginVertical: 10,
                                                     }]}>{isDate ? new Date(perf.date.seconds * 1000).toLocaleDateString('fr-FR') : new Date().toLocaleDateString("fr-FR")}</Text>
                                                     <View style={styles.perfContainer}>
                                                     <Text>{perf.weight}.{perf.decimal}kg</Text>
