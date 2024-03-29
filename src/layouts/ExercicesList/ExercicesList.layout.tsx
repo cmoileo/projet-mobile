@@ -83,8 +83,13 @@ export const ExercicesListLayout = ({exercices, trainingId, training}: {exercice
                                 }
                             }>
                                 <TouchableOpacity onPress={() => handleClickExercice(index)} style={styles.container}>
-                                    <Text style={mainText.Secondary}>#{index + 1}</Text>
-                                    <Text style={mainText.Main}>{ExercicesData[exercise.id].name}</Text>
+                                    <Text style={[mainText.Secondary, {
+                                        color: "white",
+                                    }]}>#{index + 1}</Text>
+                                    <Text style={[mainText.Main, {
+                                        color: "white",
+                                        fontWeight: "bold"
+                                    }]}>{ExercicesData[exercise.id].name}</Text>
                                 </TouchableOpacity>
                                 <View style={styles.perfsContainer}>
                                     {
@@ -96,6 +101,12 @@ export const ExercicesListLayout = ({exercices, trainingId, training}: {exercice
 
                                             return !isShowDate ? (
                                                 <View style={styles.perfContainer}>
+                                                    <View style={{
+                                                        width: 10,
+                                                        height: 10,
+                                                        borderRadius: 5,
+                                                        backgroundColor: Colors["primary-color"],
+                                                    }}></View>
                                                     <Text>{perf.weight}.{perf.decimal}kg</Text>
                                                     <Text>{perf.repetitions}reps</Text>
                                                 </View>
@@ -105,8 +116,15 @@ export const ExercicesListLayout = ({exercices, trainingId, training}: {exercice
                                                         marginVertical: 10,
                                                     }]}>{isDate ? new Date(perf.date.seconds * 1000).toLocaleDateString('fr-FR') : new Date().toLocaleDateString("fr-FR")}</Text>
                                                     <View style={styles.perfContainer}>
-                                                    <Text>{perf.weight}.{perf.decimal}kg</Text>
-                                                    <Text>{perf.repetitions}reps</Text>
+                                                        <View style={{
+                                                            width: 10,
+                                                            height: 10,
+                                                            borderRadius: 5,
+                                                            backgroundColor: Colors["primary-color"],
+                                                            alignSelf: "center",
+                                                        }}></View>
+                                                    <Text style={mainText.Secondary}>{perf.weight}.{perf.decimal}kg</Text>
+                                                    <Text style={mainText.Secondary}>{perf.repetitions}reps</Text>
                                                     </View>
                                                 </>
                                                 )
@@ -152,7 +170,7 @@ const styles = StyleSheet.create({
       gap: 20,
       alignItems: "center",
       padding: 20,
-      backgroundColor: "white",
+      backgroundColor: Colors["primary-color"],
       borderRadius: 10,
       borderStyle: "solid",
       borderColor: Colors["primary-color"],

@@ -22,11 +22,20 @@ export const TrainingPill: React.FC<Props> = ({id, trainingName, date, exercices
                 trainingId: id
             })
         }} style={styles.container}>
-            <Text style={mainText.Main}>{trainingName}</Text>
+            <Text style={[mainText.Main, {
+                color: "white",
+                fontWeight: "bold"
+            }]}>{trainingName}</Text>
             <View style={styles.wrapper}>
-                <Text style={mainText.Secondary}>{formatedDateToString}</Text>
-                <Text style={mainText.Secondary}>-</Text>
-                <Text style={mainText.Secondary}>{exercicesCount} exercices</Text>
+                <Text style={[mainText.Secondary, {
+                    color: "white"
+                }]}>{formatedDateToString}</Text>
+                <Text style={[mainText.Secondary, {
+                    color: "white"
+                }]}>-</Text>
+                <Text style={[mainText.Secondary, {
+                    color: "white"
+                }]}>{exercicesCount} exercices</Text>
             </View>
         </TouchableOpacity>
     );
@@ -39,11 +48,9 @@ const styles = StyleSheet.create({
         alignItems: "flex-start",
         gap: 10,
         width: "100%",
-        borderStyle: "solid",
-        borderWidth: 1,
         padding: 15,
         borderRadius: 10,
-        borderColor: Colors["divider-color"],
+        backgroundColor: Colors["primary-color"],
     },
     wrapper: {
         display: "flex",
