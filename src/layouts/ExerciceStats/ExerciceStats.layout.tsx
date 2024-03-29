@@ -35,51 +35,57 @@ const ExerciceStatsLayout: React.FC<Props> = ({ exerciceId }) => {
 
     const fetchData = async () => {
       const data = await trainingOperations.readByUserId(userId);
-      const exercices = data
-        .filter((training) =>
-          training.exercises.find((ex: Exercise) => ex.id === exerciceId)
-        )
-        .map((training) => {
-          return training.exercises;
-        })
-        .flat();
-      const currentExercice = exercices.filter((ex) => ex.id === exerciceId);
+      console.log(exerciceId);
 
-      currentExercice.forEach((exercice: Exercise, index) => {
-        let totalWeight = 0;
-        let totalRepetitions = 0;
-        let totalBreakTime = 0;
-        let totalIndice = 0;
-        for (const perf of exercice.perf) {
-          totalWeight += perf.weight;
-          totalRepetitions += perf.repetitions;
-          totalBreakTime += perf.breakTime;
-          totalIndice += perf.indice;
+      const training = data.filter((training) =>
+        training.exercises.find((ex: Exercise) => ex.id === exerciceId)
+      );
+      const exercicesPerDay = training.map((training) =>
+        training.exercises.filter((ex: Exercise) => ex.id === exerciceId)
+      );
+      console.log("exercices => ", exercicesPerDay);
+      exercicesPerDay.forEach((exercices, index) => {
+        for (const exercice of exercices) {
+          let totalWeight = 0;
+          let totalRepetitions = 0;
+          let totalBreakTime = 0;
+          let totalIndice = 0;
+          console.log("exercice => ", exercice);
+          if (exercice.perf.length === 0) return;
+          for (const perf of exercice.perf) {
+            totalWeight += perf.weight;
+            totalRepetitions += perf.repetitions;
+            totalIndice += perf.indice;
+          }
+          const moyenneWeight = totalWeight / exercice.perf.length;
+          const moyenneRepetitions = totalRepetitions / exercice.perf.length;
+          const moyenneIndice = totalIndice / exercice.perf.length;
+          console.log("moyenneWeight => ", moyenneWeight, "index => ", index);
+          console.log(
+            "moyenneRepetitions => ",
+            moyenneRepetitions,
+            "index => ",
+            index
+          );
+          console.log("moyenneIndice => ", moyenneIndice, "index => ", index);
+
+          setDataWeight((prev) => [
+            ...prev,
+            { value: moyenneWeight, label: String(index + 1) },
+          ]);
+          setDataRepetition((prev) => [
+            ...prev,
+            { value: moyenneRepetitions, label: String(index + 1) },
+          ]);
+          setDataIndice((prev) => [
+            ...prev,
+            { value: moyenneIndice, label: String(index + 1) },
+          ]);
         }
-        const moyenneWeight = totalWeight / exercice.perf.length;
-        const moyenneRepetitions = totalRepetitions / exercice.perf.length;
-        const moyenneBreakTime = totalBreakTime / exercice.perf.length;
-        const moyenneIndice = totalIndice / exercice.perf.length;
-        setDataWeight((prev) => [
-          ...prev,
-          { value: moyenneWeight, label: String(index) },
-        ]);
-        setDataRepetition((prev) => [
-          ...prev,
-          { value: moyenneRepetitions, label: String(index) },
-        ]);
-        setDataBreakTime((prev) => [
-          ...prev,
-          { value: moyenneBreakTime, label: String(index) },
-        ]);
-        setDataIndice((prev) => [
-          ...prev,
-          { value: moyenneIndice, label: String(index) },
-        ]);
-        setTitleExercice(
-          exercisesData.find((ex) => ex.id === Number(exerciceId))!.name
-        );
       });
+      setTitleExercice(
+        exercisesData.find((ex) => ex.id === Number(exerciceId))!.name
+      );
     };
     fetchData();
   }, [userId]);
