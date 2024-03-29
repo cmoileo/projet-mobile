@@ -14,11 +14,8 @@ export const ExercicesListLayout = ({exercices, trainingId, training}: {exercice
     const [selectedWeight, setSelectedWeight] = useState<number>(0);
     const [selectedDecimal, setSelectedDecimal] = useState<number>(0);
     const [selectedRepetitions, setSelectedRepetitions] = useState<number>(0);
-    const [chronoValue, setChronoValue] = useState<any>({
-        hours: 0,
-        minutes: 0,
-        seconds: 0,
-    });
+    const [chronoMinuteValue, setChronoMinuteValue] = useState<number>(0);
+    const [chronoSecondValue, setChronoSecondValue] = useState<number>(0);
 
     const handleClickExercice = (index: number) => {
         setIsModalVisible("flex")
@@ -31,7 +28,8 @@ export const ExercicesListLayout = ({exercices, trainingId, training}: {exercice
     }
 
     const handleValidateExerciceData = async (
-        chronoValue: any,
+        chronoMinuteValue: number,
+        chronoSecondValue: number,
         index: number,
         selectedWeight: number,
         selectedDecimal: number,
@@ -46,7 +44,10 @@ export const ExercicesListLayout = ({exercices, trainingId, training}: {exercice
                 repetitions: selectedRepetitions,
                 date: new Date(),
                 indice: selectedWeight * selectedRepetitions * Math.log(selectedRepetitions + 1),
-                chrono: chronoValue
+                rest: {
+                    minute: chronoMinuteValue,
+                    second: chronoSecondValue
+                }
             });
         } else {
             newExercices[index].perf = [{
@@ -55,7 +56,10 @@ export const ExercicesListLayout = ({exercices, trainingId, training}: {exercice
                 repetitions: selectedRepetitions,
                 date: new Date(),
                 indice: selectedWeight * selectedRepetitions * Math.log(selectedRepetitions + 1),
-                chrono: chronoValue
+                rest: {
+                    minute: chronoMinuteValue,
+                    second: chronoSecondValue
+                }
             }]
         }
         const updatetedTraining = {
@@ -115,7 +119,21 @@ export const ExercicesListLayout = ({exercices, trainingId, training}: {exercice
                     })}
                 </View>
             </ScrollView>
-            <AddPerf chronoValue={chronoValue} setChronoValue={setChronoValue} selectedRepetitions={selectedRepetitions} setSelectedRepetitions={setSelectedRepetitions} selectedDecimal={selectedDecimal} selectedWeight={selectedWeight} setSelectedDecimal={setSelectedDecimal} setSelectedWeight={setSelectedWeight} handleValidateExerciceData={handleValidateExerciceData} selectedExerciceId={selectedExerciceId} isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible} />
+            <AddPerf
+                chronoSecondValue={chronoSecondValue}
+                setChronoSecondValue={setChronoSecondValue}
+                chronoMinuteValue={chronoMinuteValue}
+                setChronoMinuteValue={setChronoMinuteValue}
+                selectedRepetitions={selectedRepetitions}
+                setSelectedRepetitions={setSelectedRepetitions}
+                selectedDecimal={selectedDecimal}
+                selectedWeight={selectedWeight}
+                setSelectedDecimal={setSelectedDecimal}
+                setSelectedWeight={setSelectedWeight}
+                handleValidateExerciceData={handleValidateExerciceData}
+                selectedExerciceId={selectedExerciceId}
+                isModalVisible={isModalVisible}
+                setIsModalVisible={setIsModalVisible} />
         </>
     )
 }

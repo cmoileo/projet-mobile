@@ -7,8 +7,10 @@ import {buttonStyles} from "../Shared/ButtonStyle";
 import {ChronoComponent} from "../Chronometre/Chrono.component";
 
 export const AddPerf = ({
-    chronoValue,
-    setChronoValue,
+    chronoMinuteValue,
+    setChronoMinuteValue,
+    chronoSecondValue,
+    setChronoSecondValue,
     selectedWeight,
     setSelectedWeight,
     selectedDecimal,
@@ -19,8 +21,10 @@ export const AddPerf = ({
     selectedExerciceId,
     isModalVisible,
     setIsModalVisible}: {
-    chronoValue: number,
-    setChronoValue: Dispatch<SetStateAction<number>>,
+    chronoMinuteValue: number,
+    setChronoMinuteValue: Dispatch<SetStateAction<number>>,
+    chronoSecondValue: number,
+    setChronoSecondValue: Dispatch<SetStateAction<number>>,
     selectedRepetitions: number,
     setSelectedRepetitions: Dispatch<SetStateAction<number>>,
     selectedWeight: number,
@@ -28,7 +32,8 @@ export const AddPerf = ({
     selectedDecimal: number,
     setSelectedDecimal: Dispatch<SetStateAction<number>>,
     handleValidateExerciceData: (
-        chronoValue: any,
+        chronoMinuteValue: number,
+        chronoSecondValue: number,
         index: number,
         selectedWeight: number,
         selectedDecimal: number,
@@ -79,14 +84,36 @@ export const AddPerf = ({
                             items={numberArray3.map(number => ({label: number.toString(), value: number.toString()}))}/>
                         <Text>reps</Text>
                     </View>
-                    <ChronoComponent chronoValue={chronoValue} setChronoValue={setChronoValue}/>
+
+                    <View style={styles.pickersContainer}>
+                        <RNPickerSelect
+                            // @ts-ignore
+                            style={styles.pickerStyle}
+                            placeholder={{label: chronoMinuteValue.toString(), value: chronoMinuteValue}}
+                            onValueChange={(value) => setChronoMinuteValue(parseInt(value))}
+                            items={numberArray1.map(number => ({label: number.toString(), value: number.toString()}))}/>
+                        <Text style={{
+                            color: Colors["primary-color"],
+                            fontSize: 18,
+                            fontWeight: "bold",
+                        }}>m</Text>
+                        <RNPickerSelect
+                            // @ts-ignore
+                            style={styles.pickerStyle}
+                            placeholder={{label: chronoSecondValue.toString(), value: chronoSecondValue}}
+                            onValueChange={(value) => setChronoSecondValue(parseInt(value))}
+                            items={numberArray2.map(number => ({label: number.toString(), value: number.toString()}))}/>
+                        <Text>s</Text>
+                    </View>
+
                     <TouchableOpacity style={styles.validateBtn} onPress={() => {
                         if (selectedExerciceId === null
                             || selectedWeight === null
                             || selectedDecimal === null
                             || selectedRepetitions === null) return;
                         handleValidateExerciceData(
-                            chronoValue,
+                            chronoMinuteValue,
+                            chronoSecondValue,
                             selectedExerciceId,
                             selectedWeight,
                             selectedDecimal,
