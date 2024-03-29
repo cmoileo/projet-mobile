@@ -4,7 +4,6 @@ import {NavigationProp} from "@react-navigation/native";
 import {mainWrapper} from "../../components/Shared/SharedStyle";
 import {AppTitleText} from "../../components/AppTitleText/AppTitleText";
 import {PageTitle} from "../../components/PageTitle/PageTitle";
-import {TrainingList} from "../../layouts/TrainingLists/TrainingList.layout";
 import {AddNewTrainingLayout} from "../../layouts/AddNewTraing/AddNewTraining.layout";
 
 type Props = {
