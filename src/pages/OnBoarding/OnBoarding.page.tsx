@@ -11,7 +11,9 @@ const OnBoarding: React.FC<Props> = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.wrapper}>
-        <Image source={require("../../../assets/onboarding.png")} />
+        <Image
+            style={{ width: 300, height: 280 }}
+            source={require("../../../assets/onboarding.png")} />
         <Image source={require("../../../assets/logo-sporty.png")} />
         <Text style={styles.textDescription}>
           Enregistres tes entraînement et vois ton évolution dans le temps
