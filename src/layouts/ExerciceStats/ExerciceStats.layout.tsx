@@ -62,19 +62,19 @@ const ExerciceStatsLayout: React.FC<Props> = ({ exerciceId }) => {
         const moyenneIndice = totalIndice / exercice.perf.length;
         setDataWeight((prev) => [
           ...prev,
-          { value: moyenneWeight, label: String(index + 1) },
+          { value: moyenneWeight, label: String(index) },
         ]);
         setDataRepetition((prev) => [
           ...prev,
-          { value: moyenneRepetitions, label: String(index + 1) },
+          { value: moyenneRepetitions, label: String(index) },
         ]);
         setDataBreakTime((prev) => [
           ...prev,
-          { value: moyenneBreakTime, label: String(index + 1) },
+          { value: moyenneBreakTime, label: String(index) },
         ]);
         setDataIndice((prev) => [
           ...prev,
-          { value: moyenneIndice, label: String(index + 1) },
+          { value: moyenneIndice, label: String(index) },
         ]);
         setTitleExercice(
           exercisesData.find((ex) => ex.id === Number(exerciceId))!.name
