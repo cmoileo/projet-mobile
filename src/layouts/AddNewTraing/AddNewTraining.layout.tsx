@@ -61,8 +61,7 @@ export const AddNewTrainingLayout = ({
                     key={index}
                     title={
                       ExercicesData[
-                        ExercicesData.findIndex((ex) => ex.id == exercice.id) +
-                          1
+                        ExercicesData.findIndex((ex) => ex.id == exercice.id)
                       ].name
                     }
                     index={index}
