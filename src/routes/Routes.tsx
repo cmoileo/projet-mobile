@@ -13,7 +13,10 @@ const Stack = createNativeStackNavigator();
 const MyStack = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator screenOptions={{
+        headerShown: false,
+        animation: "none",
+      }}>
         <Stack.Screen name="Home" component={OnBoarding} />
         <Stack.Screen name="MainHome" component={HomePage} />
         <Stack.Screen name="AddNewTraining" component={AddNewTraining} />

@@ -5,7 +5,9 @@ export const AppTitleText = () => {
   return (
     <Image
       source={require("../../../assets/logo-sporty.png")}
-      style={appTitleText.Title}
+      style={[appTitleText.Title, {
+        marginTop: 100,
+      }]}
     />
   );
 };
