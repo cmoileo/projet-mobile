@@ -56,6 +56,7 @@ const ExerciceListLayout: React.FC<Props> = ({ navigation }) => {
               id={exercise.id}
               navigation={navigation}
               made_number={exercise.made_number}
+              isLast={index === exercises.length - 1}
             />
           );
         })}

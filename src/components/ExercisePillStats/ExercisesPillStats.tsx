@@ -9,6 +9,7 @@ type Props = {
   index: number;
   id: string;
   navigation: NavigationProp<any>;
+  isLast: boolean;
 };
 
 export const ExercicePillStats: React.FC<Props> = ({
@@ -17,6 +18,7 @@ export const ExercicePillStats: React.FC<Props> = ({
   index,
   id,
   navigation,
+  isLast
 }) => {
   const handleNavigate = () => {
     if (navigation) {
@@ -24,7 +26,9 @@ export const ExercicePillStats: React.FC<Props> = ({
     }
   };
   return (
-    <TouchableOpacity style={styles.container} onPress={handleNavigate}>
+    <TouchableOpacity style={[styles.container, {
+        marginBottom: isLast ? 130 : undefined,
+    }]} onPress={handleNavigate}>
       <View style={styles.wrapper}>
         <Text style={{ color: Colors["primary-color"] }}>{title}</Text>
         <Text>Réalisé {made_number} fois</Text>
