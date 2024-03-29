@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     padding: 15,
     position: "absolute",
-    left: "52%",
+    left: "57%",
     top: "-50%",
   },
 });
