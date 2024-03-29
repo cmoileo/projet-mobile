@@ -43,7 +43,7 @@ export const AddExerciceModalComponent = ({isModalVisible, setIsModalVisible, ch
                     <View style={styles.exercicesContainer}>
                         {Exercices.map((exercice, index) => {
                             return (
-                                <TouchableOpacity onPress={() => handleExercicePress(index + 1)} key={index}
+                                <TouchableOpacity onPress={() => handleExercicePress(index)} key={index}
                                                   style={[styles.addButton, {
                                                       marginBottom: index === Exercices.length - 1 ? 30 : 0
                                                   }]}>

@@ -4,7 +4,6 @@ import {SvgXml} from "react-native-svg";
 import RNPickerSelect from "react-native-picker-select";
 import {Colors} from "../Shared/Colors";
 import {buttonStyles} from "../Shared/ButtonStyle";
-import {ChronoComponent} from "../Chronometre/Chrono.component";
 
 export const AddPerf = ({
     chronoMinuteValue,
@@ -46,6 +45,7 @@ export const AddPerf = ({
     const numberArray1 = Array.from({ length: 401 }, (_, index) => index - 50);
     const numberArray2 = Array.from({ length: 10 }, (_, index) => index);
     const numberArray3 = Array.from({ length: 50 }, (_, index) => index + 1);
+    const numberArray4 = Array.from({ length: 59 }, (_, index) => index + 1);
 
 
     return (
@@ -91,7 +91,7 @@ export const AddPerf = ({
                             style={styles.pickerStyle}
                             placeholder={{label: chronoMinuteValue.toString(), value: chronoMinuteValue}}
                             onValueChange={(value) => setChronoMinuteValue(parseInt(value))}
-                            items={numberArray1.map(number => ({label: number.toString(), value: number.toString()}))}/>
+                            items={numberArray4.map(number => ({label: number.toString(), value: number.toString()}))}/>
                         <Text style={{
                             color: Colors["primary-color"],
                             fontSize: 18,
@@ -102,7 +102,7 @@ export const AddPerf = ({
                             style={styles.pickerStyle}
                             placeholder={{label: chronoSecondValue.toString(), value: chronoSecondValue}}
                             onValueChange={(value) => setChronoSecondValue(parseInt(value))}
-                            items={numberArray2.map(number => ({label: number.toString(), value: number.toString()}))}/>
+                            items={numberArray4.map(number => ({label: number.toString(), value: number.toString()}))}/>
                         <Text>s</Text>
                     </View>
 
